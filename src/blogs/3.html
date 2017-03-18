@@ -1,0 +1,34 @@
+<div style="padding:0 10px;"><p style="line-height:" 2em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">&nbsp;&nbsp;&nbsp;&nbsp;好久木有写写文章了, 到了上海这边一开始有点不适应, 事情有点多.</span></p>
+        <p style="line-height:" 2em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">&nbsp;&nbsp;&nbsp;&nbsp;好吧, 言归正传.&nbsp;最近做一个项目需要一个模块来处理HTML格式化代码. 这种模块代码最好不要自己写, 因为它需要考虑的细节太多, 而且这种可重用的代码早有大牛写出来了, 而且经过无数人的实践确定其发生异常的概率几乎为零. 咱们就不要重复造<span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" line-height:="" 32px;="">轮子</span>了.</span><br></p>
+        <p style="line-height:" 2em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">&nbsp;&nbsp;&nbsp;&nbsp;但如果这样子的函数库可以轻松从Github获取, 我为什么还要写这篇文章呢. 是的, 我找了很久(一俩个小时吧)也木有找到, 最后我机智地想到某些知名网站(比如oschina与站长之家)提供HTML格式化的功能, 我就借用了一下他们的代码, 并整理了一下让大家可以很方便的调用.代码已上传Github.<a href="https://github.com/AJLoveChina/StyleCode" target="_blank" textvalue="地址传送门">&gt;&gt;&gt;地址传送门&gt;&gt;&gt;</a>(包含 HTML, CSS, JS 格式化, 后续再加入其它的功能, 例如JSON格式化等)</span></p>
+        <p style="line-height:" 2em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">使用灰常简单 :</span></p>
+<pre class="brush:js;toolbar:false">&nbsp;&nbsp;&nbsp;&nbsp;/*
+&nbsp;&nbsp;&nbsp;&nbsp;tools.styleHtml&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格式化HTML
+&nbsp;&nbsp;&nbsp;&nbsp;tools.styleCss&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格式化CSS
+&nbsp;&nbsp;&nbsp;&nbsp;tools.styleJs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格式化JS
+&nbsp;&nbsp;&nbsp;&nbsp;*/
+&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;html&nbsp;=&nbsp;'&lt;div&nbsp;id=div&nbsp;class=div&gt;&lt;h5&gt;Title&lt;/h5&gt;&lt;p&gt;Hello&nbsp;World&lt;/p&gt;&lt;/div&gt;';
+&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;js&nbsp;=&nbsp;for(var&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;100;&nbsp;i++)&nbsp;{console.log(i);};
+&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;css&nbsp;=&nbsp;#div{color:red;font-size:12px;}#span{color:lightblue;};
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(html);
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(----------HTML&nbsp;格式化----------);
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(tools.styleHtml(html));
+
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(\n\n);
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(css);
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(----------CSS&nbsp;格式化----------);
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(tools.styleCss(css));
+
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(\n\n);
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(js);
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(----------JS&nbsp;格式化----------);
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(tools.styleJs(js));</pre>
+        <p style="line-height:" 2em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';=""></span><br></p>
+        <p style="line-height:" 2em;="" text-align:="" center;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20160117/1453026723871393.png" title="1453026723871393.png" alt="blob.png"></span></p>
+        <p style="line-height:" 2em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">PPS : 还有我说, 建议大家俩个最佳实践</span></p>
+        <ol class="list-paddingleft-2" style="list-style-type:" decimal;="">
+            <li><p style="line-height:" 2em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">把这个功能写成requirejs 或者 seajs 的一个模块</span></p></li>
+            <li><p style="line-height:" 2em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">写成jQuery或者underscore插件</span></p></li>
+        </ol>
+        <p style="line-height:" 2em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">目的很单纯, 避免引入额外的全局变量.&nbsp;<br></span></p></div>
+

@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8" ng-controller="blogListCtrl">
+
+            <div class="panel panel-default" ng-repeat="item in items">
+                <div class="panel-heading">{{item.title}}</div>
+                <div class="panel-body">
+                    <div ng-include="item.url"></div>
+                </div>
+                <div class="panel-footer">
+                    <span ng-repeat="topic in item.topics">
+                        <span class=" label label-default">
+                            {{topic}}
+                        </span>&nbsp;
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="list-group" ng-controller="userInfoCtrl">
+                <a href="#" class="list-group-item disabled">
+                    他说
+                </a>
+                <a href="javascript:;" ng-repeat="item in ps"
+                   class="list-group-item">
+                    <span class="badge">{{item.name}}</span>
+                    {{item.say}}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

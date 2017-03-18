@@ -1,14 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html  lang="cn" ng-app="hejie" id="ng-app" xmlns:ng="http://angularjs.org">
+<head ng-controller="headCtrl">
     <meta charset="UTF-8">
-    <title></title>
+    <title ng-bind="title"></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="四六级,CET,模拟考试"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/css/main.css">
+    <!--[if lte IE 8]>
+    <script>
+        // 解决ie8 console 未定义的代码
+        if (!window.console || !console.firebug) {
+            var names = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml", "group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
+
+            window.console = {};
+            for (var i = 0; i < names.length; ++i)
+                window.console[names[i]] = function () {
+                }
+        }
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+
+        // Optionally these for CSS
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+    </script>
+    <![endif]-->
+    <!-- lib-->
     <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
+    <script src="bower_components/respond/dest/respond.min.js"></script>
+    <script src="bower_components/es5-shim/es5-shim.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <script src="src/js/index.js"></script>
+    <!-- controllers -->
+    <script src="src/js/controllers/homeController.js"></script>
+    <script src="src/js/controllers/blogListController.js"></script>
+    <script src="src/js/controllers/userInfoCtrl.js"></script>
+
+
+    <!-- services-->
+    <script src="src/js/services/blogService.js"></script>
 </head>
-<body>
+<body style="background-color: #eee;">
+
+<div ng-include="'src/tpl/header.html'"></div>
+
+<div class="container">
+    <div data-ui-view=""></div>
+</div>
 
 
-<p>Hi I am hejie2.0</p>
 
 </body>
 </html>

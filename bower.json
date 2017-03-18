@@ -1,0 +1,29 @@
+{
+  "name": "hejie",
+  "homepage": "https://github.com/AJLoveChina/AJLoveChina.github.io",
+  "authors": [
+    "AJ <735267452@qq.com>"
+  ],
+  "description": "Hi I am hejie.",
+  "main": "index.html",
+  "keywords": [
+    "code",
+    "love"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.10.1",
+    "html5shiv": "^3.7.3",
+    "es5-shim": "^4.5.9",
+    "chart.js": "^2.5.0",
+    "respond": "Respond#^1.4.2"
+  }
+}
