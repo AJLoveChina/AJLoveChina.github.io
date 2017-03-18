@@ -1,0 +1,56 @@
+
+    <div style="padding:0 10px;"><p style="line-height:" 1.5em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" color:="" rgb(73,="" 68,="" 41);="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文聊聊自己使用模块开发的一点心得, 不说seajs语法.</span></p>
+        <p style="line-height:" 1.5em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" color:="" rgb(73,="" 68,="" 41);="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前端模块开发有俩个有名(我知道的..)的框架, 分别是 seajs 和 requirejs, requirejs我也简单地了解了一下, 个人觉得和seajs语法比较像.好吧, 其实是他们和Nodejs的模块引入语法比较像.</span></p>
+        <p style="line-height:" 1.5em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" color:="" rgb(73,="" 68,="" 41);=""><br></span></p>
+        <p style="line-height:" 1.5em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" color:="" rgb(73,="" 68,="" 41);="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" color:="" rgb(73,="" 68,="" 41);="" font-size:="" 14px;="">第一次接触seajs是在三个月前, 当时公司的网站的前端Js代码大都放到几个文件中, 如果某个页面的js代码特殊需要, 就直接把js代码注入在html页面中,但是后来问题来了.</span></span></p>
+        <p style="line-height:" 1.5em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" color:="" rgb(73,="" 68,="" 41);="" font-size:="" 14px;="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有的代码初期看来是为某个页面量身定制, 后来发现有的页面也需要这段代码, 好吧再把一俩百行的js代码复制到这个新的页面, 后来又有一个页面需要这段代码... &nbsp;</span></p>
+        <p style="line-height:" 1.5em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" color:="" rgb(73,="" 68,="" 41);="" font-size:="" 14px;="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好吧,你要吐槽了, 既然这么多页面用到这段代码, 为什么不放到全站公用的js文件中(比如我们的main.js), 可事实也就那么几个页面需要这段代码, 如果这就是这段代码加入main.js文件的理由, 那么我们的main.js早就爆炸了. &nbsp;</span></p>
+        <p style="line-height:" 1.5em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" color:="" rgb(73,="" 68,="" 41);="" font-size:="" 14px;="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而且, 有一个问题来了, 如果这个一俩百行js代码的模块的功能需要改变,或者有什么BUG, 那么引入这段代码的那些html页面都需要修改, 感觉整个人都不好了!</span><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" color:="" rgb(73,="" 68,="" 41);=""><img src="http://img.baidu.com/hi/jx2/j_0081.gif" width="25" height="22" style="width:" 25px;="" height:="" 22px;=""></span></p>
+        <p style="line-height:" 1.5em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" color:="" rgb(73,="" 68,="" 41);=""><br></span></p>
+        <p style="line-height:" 1.5em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" color:="" rgb(73,="" 68,="" 41);="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好吧, 如果你还在为这个问题困扰, 那么是时候进行模块开发了. 我写的第一个模块就是商品滚动展示模块, 这个模块的代码大约300行,&nbsp;</span></p>
+<pre class="brush:js;toolbar:false">//&nbsp;独立的模块js文件&nbsp;&nbsp;比如文件路径&nbsp;&nbsp;js/seajs/modules/images.roll.js
+define(function(require,&nbsp;exports,&nbsp;module){
+&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;ImagesRoll()&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;ImagesRoll.prototype&nbsp;=&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;};
+&nbsp;&nbsp;&nbsp;&nbsp;module.exports&nbsp;=&nbsp;ImagesRoll;
+})
+
+//&nbsp;如果哪个HTML页面需要这个模块,&nbsp;只需要&nbsp;这样调用一下就行了
+seajs.use(/文件路径/js/seajs/modules/images.roll.js,&nbsp;function&nbsp;(A)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;//这里的A&nbsp;就是函数&nbsp;ImagesRoll&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;调用这个模块的方法是多么的方便&nbsp;!
+&nbsp;&nbsp;&nbsp;&nbsp;A.func1();
+&nbsp;&nbsp;&nbsp;&nbsp;A.func2();
+});
+
+//&nbsp;但一位阿里的开发者对我说&nbsp;:&nbsp;其实这并不是好的实践方式
+//&nbsp;应该在一个js文件中管理所有页面可能使用的模块(我们假定叫&nbsp;gate.js)
+seajs.use(/文件路径/gate.js,&nbsp;function&nbsp;()&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;使用require(同步)&nbsp;与&nbsp;require.async(异步加载)&nbsp;&nbsp;调用相应的模块
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;同步加载
+&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;A&nbsp;=&nbsp;require(/模块的路径);
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;异步加载
+&nbsp;&nbsp;&nbsp;&nbsp;require.async(/模块的路径,&nbsp;function&nbsp;(B)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;});
+});
+
+//&nbsp;我的博客目前就是使用第二种实践方式
+/*
+&nbsp;&nbsp;&nbsp;&nbsp;但其实怎么说呢&nbsp;?&nbsp;第一种方式也不是毫无优点可言.比如我们的网站是转型到模块开发的,&nbsp;因为实现的不彻底,&nbsp;或者有时候要快速地实现功能,&nbsp;直接这样调用也是一种不错的方式
+*/
+seajs.use(/模块路径,&nbsp;function&nbsp;(A)&nbsp;{
+&nbsp;&nbsp;&nbsp;//&nbsp;A.func()&nbsp;
+});
+//&nbsp;还是那句话,&nbsp;适合的才是最好的.</pre>
+        <p><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;那么问题来了, 模块开发有木有它的缺点呢 ?</span></p>
+        <p><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">有的, 就是本来一个JS文件搞定的事, 变成引入了好几个js文件.更多的文件就意味着对 服务器更大的负载 与 更高的流量.</span></p>
+        <p><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不过这些缺点其实也不是什么大事, 和模块化带来的开发便捷相比, 已然不值一提.</span></p>
+        <p><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是...</span></p>
+        <p><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果你是个极限优化狂魔, 那么也有办法.即服务端把 一个个 模块js文件合并后输出到浏览器, 比如淘宝使用的就是这种技术. 然而具体的细节我并不清楚, 因为我们小公司也没有这样的需求驱动</span><img src="http://img.baidu.com/hi/youa/y_0001.gif" width="46" height="41" style="width:" 46px;="" height:="" 41px;=""></p></div>
+
