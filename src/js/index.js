@@ -14,5 +14,10 @@ hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $lo
             url: '/me',
             templateUrl: 'src/tpl/me.html'
         })
+        .state('message', {
+            url: '/message',
+            templateUrl: 'src/tpl/message.html'
+        })
+
 
 });
