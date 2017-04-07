@@ -32,3 +32,13 @@ body{
     -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
 }
+
+.max-width-40{max-width: 40px;}
+.max-width-50{max-width: 50px;}
+.max-width-60{max-width: 60px;}
+.max-width-80{max-width: 80px;}
+.max-width-100{max-width: 100px;}
+.max-width-200{max-width: 200px;}
+.max-width-300{max-width: 300px;}
+.max-width-400{max-width: 400px;}
+.max-width-500{max-width: 500px;}

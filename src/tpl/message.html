@@ -1,11 +1,38 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="messageController">
     <div class="row">
        <div class="col-md-8">
        </div>
         <div class="col-md-4 background-white"">
-            <!-- 多说评论框 start -->
-            <div class="ds-thread" data-thread-key="hejie.duoshuo.comment" data-title="Message for hejie" data-url="#/message"></div>
-            <!-- 多说评论框 end -->
+
+            <div class="hejie-comments" style="padding: 20px 10px;">
+
+                <div class="media" ng-repeat="item in comments">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object max-width-60" src="src/imgs/default-user-boy.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{item.name}}</h4>
+                        {{item.content}}
+
+                        <div class="media" ng-repeat="item2 in item.data">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object max-width-60" src="src/imgs/default-user-girl.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{item2.name}}</h4>
+                                {{item2.content}}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
