@@ -11,3 +11,16 @@ hejie.directive("randomListItemStyle", function () {
         ele.addClass("list-group-item-" + arr[i++ % 4]);
     }
 });
+
+
+hejie.directive("pagination", function () {
+   return {
+       restrict : "E",
+       templateUrl : "src/tpl/includes/pagination.html",
+       scope: {
+           page : '=page',
+           maxPage : '=',
+           onClick : "="
+       }
+   }
+});

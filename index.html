@@ -39,6 +39,7 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/layer/layer-v2.4.js"></script>
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
         var duoshuoQuery = {short_name:"hejie2"};
@@ -53,6 +54,7 @@
     </script>
     <!-- 多说公共JS代码 end -->
 
+
     <script src="src/js/index.js"></script>
     <!-- controllers -->
     <script src="src/js/controllers/homeController.js"></script>
@@ -63,9 +65,13 @@
 
     <!-- services-->
     <script src="src/js/services/blogService.js"></script>
+    <script src="src/js/services/commonService.js"></script>
 
     <!-- directives-->
     <script src="src/js/directives/main.directives.js"></script>
+
+    <!-- filters -->
+    <script src="src/js/filters/main.filter.js"></script>
 </head>
 <body style="background-color: #eee;">
 
@@ -75,7 +81,7 @@
     <div data-ui-view=""></div>
 </div>
 
-
+<div id="ajax-waiting-modal" class="ajax-waiting-modal" style="display: none;"></div>
 
 </body>
 </html>
