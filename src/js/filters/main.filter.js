@@ -34,4 +34,14 @@ hejie.filter("timeago", function () {
         var timeagoInstance = timeago();
         return timeagoInstance.format(input, 'zh_CN');
     }
+});
+
+
+hejie.filter("userImg", function () {
+    return function (input) {
+        if (input) {
+            return input;
+        }
+        return "src/imgs/default-user-boy.jpg";
+    }
 })

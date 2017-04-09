@@ -1,3 +1,24 @@
 .blog img {
   max-width: 100%;
 }
+.hejie-comments .img {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.hejie-comments .title {
+  font-size: 12px;
+  font-weight: bold;
+}
+.hejie-comments .content {
+  font-size: 12px;
+  color: #444;
+}
+.hejie-comments .title,
+.hejie-comments .content {
+  margin: 0;
+  line-height: 20px;
+}

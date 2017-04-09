@@ -2,8 +2,10 @@
   "data": [
     {
       "id": 1,
+      "to" : null,
+      "gender" : 1,
       "name": "Neo",
-      "content": "Hello hejie",
+      "content": "Hello hejie<script></script>",
       "date": "2017-04-06"
     },
     {

@@ -27,13 +27,13 @@ hejie.directive("pagination", function () {
 
 hejie.directive("blogShow", function () {
     return {
-        restrict : "E",
-        templateUrl : "src/tpl/includes/blog.html",
-        scope : {
-            item : "=item"
+        restrict: "E",
+        templateUrl: "src/tpl/includes/blog.html",
+        scope: {
+            item: "=item"
         }
     }
-})
+});
 
 
 hejie.directive("weather", function () {
@@ -62,3 +62,42 @@ hejie.directive("weather", function () {
         }
     }
 });
+
+hejie.directive("comment", function () {
+    return {
+        restrict: "E",
+        templateUrl: "src/tpl/includes/comment.html",
+        scope: {
+            items: "=items"
+        }
+    }
+});
+
+hejie.directive("showPop", function () {
+    return function (scope, ele, attrs) {
+        ele.on("click", function () {
+            var selector = attrs.showPop,
+                width = attrs.width,
+                title = attrs.title;
+
+            var dom = $(selector);
+            var index = layer.open({
+                type: 1,
+                content: dom,
+                area: width + "px",
+                title: title
+            });
+            dom.data("pop-zIndex", index);
+        });
+    }
+});
+
+hejie.directive("hidePop", function () {
+    return function (scope, ele, attrs) {
+        ele.on("click", function () {
+            var sele = attrs.hidePop;
+            var index = parseInt($(sele).data("pop-zIndex"));
+            layer.close(index);
+        })
+    }
+})

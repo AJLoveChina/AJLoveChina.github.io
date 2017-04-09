@@ -4,6 +4,9 @@
  */
 
 hejie.service("commonService", function () {
+    this.config = {
+        host : "http://localhost:3000"
+    };
     /**
      * 显示全屏的等待遮罩
      */
@@ -27,4 +30,13 @@ hejie.service("commonService", function () {
         return _maxIndex;
     };
 
+
+    /**
+     * 性别
+     * @type {{boy: 1, girl: 0}}
+     */
+    this.gender = {
+        boy : 1,
+        girl : 0
+    }
 });

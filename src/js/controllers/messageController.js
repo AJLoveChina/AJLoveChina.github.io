@@ -17,3 +17,29 @@ hejie.controller("messageController", function ($scope, commentService) {
     $scope.refresh();
 
 });
+
+
+hejie.controller("writeMessageController", function ($scope, commonService, $http) {
+    $scope.message = {
+        id: null,
+        to: null,
+        gender: commonService.gender.boy,
+        name: "",
+        content: "",
+        date: "",
+        contact: ""
+    };
+
+    $scope.submit = function () {
+        $http({
+            url : commonService.config.host + "/message/insert",
+            method : "POST",
+            data : $.param({
+                message : JSON.stringify($scope.message)
+            }),
+            headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function (response) {
+            console.log(response);
+        })
+    };
+});
