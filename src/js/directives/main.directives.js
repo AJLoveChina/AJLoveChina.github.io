@@ -24,3 +24,13 @@ hejie.directive("pagination", function () {
        }
    }
 });
+
+hejie.directive("blogShow", function () {
+    return {
+        restrict : "E",
+        templateUrl : "src/tpl/includes/blog.html",
+        scope : {
+            item : "=item"
+        }
+    }
+})

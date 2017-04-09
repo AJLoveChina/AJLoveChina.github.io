@@ -4,18 +4,8 @@
 
             <pagination page="curPage" max-page="maxPage" on-click="goPage"></pagination>
 
-            <div class="panel panel-default" ng-repeat="item in items">
-                <div class="panel-heading">{{item.title}}</div>
-                <div class="panel-body min-height-500">
-                    <div ng-include="item.url"></div>
-                </div>
-                <div class="panel-footer">
-                    <span ng-repeat="topic in item.topics">
-                        <span class=" label label-default">
-                            {{topic}}
-                        </span>&nbsp;
-                    </span>
-                </div>
+            <div ng-repeat="item in items">
+                <blog-show item="item"></blog-show>
             </div>
 
             <pagination page="curPage" max-page="maxPage" on-click="goPage"></pagination>
