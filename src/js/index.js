@@ -25,7 +25,23 @@ hejie.factory('loadingInterceptor', function($q, loadingService, $location, $tim
     }
 });
 
-hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $logProvider, $httpProvider) {
+hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $logProvider, $httpProvider, $provide) {
+    $provide.decorator('$rootScope', ['$delegate', function($delegate){
+
+        Object.defineProperty($delegate.constructor.prototype, '$onRootScope', {
+            value: function(name, listener){
+                var unsubscribe = $delegate.$on(name, listener);
+                this.$on('$destroy', unsubscribe);
+
+                return unsubscribe;
+            },
+            enumerable: false
+        });
+
+
+        return $delegate;
+    }]);
+
     $httpProvider.interceptors.push('loadingInterceptor');
 
     $logProvider.debugEnabled(true);

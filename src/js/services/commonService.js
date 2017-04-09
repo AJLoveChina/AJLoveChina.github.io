@@ -5,7 +5,14 @@
 
 hejie.service("commonService", function () {
     this.config = {
-        host : "http://localhost:3000"
+        host : "http://localhost:3000",
+        ajax : {
+            success : 1,
+            error : 0
+        },
+        errorInfo : {
+            ajax : "亲, 网络异常了~~请待会试试吧~~(づ￣3￣)づ╭❤～"
+        }
     };
     /**
      * 显示全屏的等待遮罩
@@ -38,5 +45,24 @@ hejie.service("commonService", function () {
     this.gender = {
         boy : 1,
         girl : 0
+    };
+
+    /**
+     * @param jDom|index
+     */
+    this.layerClose = function (jDom) {
+        if ($.isNumeric(jDom)) {
+            layer.close(jDom);
+        } else if (_.isString(jDom)) {
+            this.layerClose($(jDom));
+        } else {
+            layer.close(parseInt(jDom.data("pop-zIndex")));
+        }
+    };
+    
+    this.layerMsg = function (info) {
+        layer.msg(info, {
+            time : 5000
+        });
     }
 });

@@ -20,26 +20,30 @@ hejie.controller("messageController", function ($scope, commentService) {
 
 
 hejie.controller("writeMessageController", function ($scope, commonService, $http) {
-    $scope.message = {
-        id: null,
-        to: null,
-        gender: commonService.gender.boy,
-        name: "",
-        content: "",
-        date: "",
-        contact: ""
+    $scope.message = {};
+    var _init = function () {
+        $scope.message = {
+            id: null,
+            to: null,
+            gender: commonService.gender.boy,
+            name: "",
+            content: "",
+            date: "",
+            contact: ""
+        }
     };
 
     $scope.submit = function () {
-        $http({
-            url : commonService.config.host + "/message/insert",
-            method : "POST",
-            data : $.param({
-                message : JSON.stringify($scope.message)
-            }),
-            headers : {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).then(function (response) {
-            console.log(response);
-        })
+
+        commentService.insert($scope.message, function (res) {
+            if (res.code === commonService.config.ajax.success) {
+                commonService.layerClose("#comment-write-panel");
+                commonService.layerMsg("谢谢您的留言~~O(∩_∩)O~~");
+                _init();
+            } else {
+                commonService.layerMsg(res.msg);
+            }
+        });
+
     };
 });
