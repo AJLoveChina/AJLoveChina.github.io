@@ -3,7 +3,7 @@
     <div class="panel-body min-height-500">
         <p>
             发表与：{{item.createTime|timeago}} -- {{item.createTime|date:"HH:mm"}}
-             | 天气:<span weather="item.weather"></span>
+             | <span weather="item.weather"></span>
         </p>
         <div ng-include="item.url"></div>
     </div>

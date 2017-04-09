@@ -42,22 +42,28 @@ hejie.directive("weather", function () {
         link : function (scope, ele, attr) {
             var val = scope.$eval(attr.weather);
             var result = "&#xe6df;"; // sun
+            var title = "写作的那天阳光正好";
             switch (val) {
                 case "rain":
                     result = "&#xe604;";
+                    title = "写作的那天细雨蒙蒙";
                     break;
                 case "cloud":
                     result = "&#xe653;";
+                    title = "写作的那天乌云密布";
                     break;
                 case "snow":
                     result = "&#xe645;";
+                    title = "写作的那天大雪纷飞";
                     break;
                 case "sun":
                 default:
                     result = "&#xe6df;";
+                    title = "写作的那天阳光正好";
                     break;
             }
             ele.css("font-family", "iconfont");
+            ele.attr("title", title);
             ele.html(result);
         }
     }

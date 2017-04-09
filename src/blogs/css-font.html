@@ -1,0 +1,66 @@
+<p style=\&quot;line-height: 1.5em;\>图标字体就是把图标放到字体文件中（如ttf，eot等），然后在css中自定义字体就可以了。</p>
+<p style=\&quot;line-height: 1.5em;\>字体图标的优势：<br></p>
+<ol class=\&quot; list-paddingleft-2\ style=\&quot;list-style-type: decimal;\>
+    <li><p style=\&quot;line-height: 1.5em;\>完美兼容IE8+与其它主流浏览器，对于IE8一下有兼容方法，不需要我们细细研究。</p></li>
+    <li><p style=\&quot;line-height: 1.5em;\>用css的color，font-size等等就可以修改字体图标的颜色，大小等等。</p></li>
+    <li><p style=\&quot;line-height: 1.5em;\>等等...<br></p></li>
+</ol>
+<p style=\&quot;line-height: 1.5em;\><br></p>
+<p style=\&quot;line-height: 1.5em;\>我们先看看ele.me的例子：</p>
+<p style=\&quot;line-height: 1.5em;\><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438475475126526.png title=\&quot;1438475475126526.png\&quot; alt=blob.png></p>
+<p style=\&quot;line-height: 1.5em;\>再看看淘宝的。。</p>
+<p style=\&quot;line-height: 1.5em;\><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438475095118789.png title=\&quot;1438475095118789.png\&quot; alt=blob.png></p>
+<p style=\&quot;line-height: 1.5em;\>俩个网站都是用图标字体，但是eleme使用的方式是伪元素:before，taobao使用的是实体。taobao的做法可以完美兼容IE6,7。eleme的方法也行，只不过要在判断是IE6,7的时候引入另一个css文件。</p>
+<p>我们来看看具体怎么做字体图标库。（多图，谨慎点击）</p>	<p>首先我们需要制作图标字体（即ttf，eot等文件），制作的方法十分简单，推荐一个国外的网站</p>
+<p><a href=https://icomoon.io/ target=_blank>制作Icon Font的网站</a><br></p>
+<p>好的，为了方便大家上手，我来说说怎么使用这个网站。</p>
+<ol class= list-paddingleft-2 style=list-style-type: decimal;>
+    <li><p style=line-height: 1.5em;>第一步：注册，如果你有账号就先登录<br></p></li>
+</ol>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438475991778875.png title=1438475991778875.png alt=blob.png><br></p>
+<p style=line-height: 1.5em;>2. 第二步：注册并登陆成功后，点击这个按钮，进入图标制作页面</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438476106107644.png title=1438476106107644.png alt=blob.png></p>
+<p style=line-height: 1.5em;>3. 第三步：点击左上角的这个（管理自己的projects）<br></p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438476176711100.png title=1438476176711100.png alt=blob.png></p>
+<p style=line-height: 1.5em;>4. 第四步：我们可以选择导入project也可以新建project。这里选择新建（导入稍后再说）</p>
+<p>这里系统可能给你初始化了一个空的project，木有关系，我们还是新建一个。</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438476303975315.png title=1438476303975315.png alt=blob.png></p>
+<p style=line-height: 1.5em;>5. 第五步：新建成功，当然就是load载入工程了。如果喜欢，你也可以给项目一个好听的名字。<br></p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438476402888821.png title=1438476402888821.png alt=blob.png width=590 height=64 style=width: 590px; height: 64px;></p>
+<p style=line-height: 1.5em;>6. 第六步：工程载入后，看到下面的页面。这里我们添加图标。icomoon网站自带了500+个</p>
+<p>免费图标，还有一些收费的。但我不建议用收费的，后面我会推荐另一个图标库，我们从那里获取图标，然后到这里制作图标字体。</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438476469128084.png title=1438476469128084.png alt=blob.png width=648 height=180 style=width: 648px; height: 180px;></p>
+<p style=line-height: 1.5em;>7. 第七步：点击add icons From library后出现一个图标选择的页面，为什么分这么多卡片让你选择呢？因为不同的设计者开发的图标在风格上会不一样，icomoon会把同一来源的图标放在一起，便于开发者管理。好吧，这里我们就随便add一个免费的。。</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438476728173547.png title=1438476728173547.png alt=blob.png width=634 height=336 style=width: 634px; height: 336px;></p>
+<p>8. 第八步：图标太多了<img src=http://img.baidu.com/hi/face/i_f02.gif>，先点箭头，再选择自己喜欢的图标。</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438477079287796.png title=1438477079287796.png alt=blob.png width=660 height=171 style=width: 660px; height: 171px;></p>
+<p>9.第九步：这里我们乱入一下，如果这些图标都木有我想要的怎么办？好的，我们看看最牛b的网站来了。。进入这个网站<a href=http://www.iconfont.cn/ target=_blank>阿里巴巴矢量图标库</a>，这个网站不需要注册就能用，其实它最牛b有三个地方。第一：图标多；第二：搜索功能强大；第三：免费。我们尝试搜索 ： code</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438477444620174.png title=1438477444620174.png alt=blob.png></p>
+<p>10.第十步：居然给了我122个图标，3Q。我喜欢右下角的那个，下载一下。</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438477503111994.png title=1438477503111994.png alt=blob.png width=568 height=169 style=width: 568px; height: 169px;></p>
+<p>11.第11步：选择下载svg，别选错了哦。ai格式是illustrate软件打开编辑的源文件，相当于photoshop的psd文件，png是给你做图片图标用的。（就是那种一张图片放几十个图标的png图）</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438477738555884.png title=1438477738555884.png alt=blob.png></p>
+<p>12.第12步 ：返回icomoon网站点击import icons。</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438477874758908.png title=1438477874758908.png alt=blob.png width=516 height=374 style=width: 516px; height: 374px;></p>
+<p>13.第13步：hey，是不是出来了，记得要选择它哦，没选择的话背景是灰色的。而且icomoon会自动把你添加的图标分为一组，便于管理。</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438477945860648.png title=1438477945860648.png alt=blob.png width=264 height=195 style=width: 264px; height: 195px;></p>
+<p>14.第14步：好的，现在图标我们都准备好了，接下来就是生成图标库了！！</p>
+<p>点击右下角的<br></p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438478111829652.png title=1438478111829652.png alt=blob.png></p>
+<p>点击后变成</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438478164289776.png title=1438478164289776.png alt=blob.png></p>
+<p>你可以直接download，也可以点击设置按钮（是的，就是那个齿轮），修改一些配置。</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438478499842562.png title=1438478499842562.png alt=blob.png width=478 height=264 style=width: 478px; height: 264px;></p>
+<p>15. 第15步，现在下载吧，解压后就是这样，如果你勾选了IE6,7，那还应该有个IE文件夹。</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438478743147082.png title=1438478743147082.png alt=blob.png></p>
+<p style=line-height: 1.5em;>16.第十六步，这里我们已经基本完成了，打开demo.html你就会看到具体怎么使用字体图标来设置字体了。</p>
+<p style=line-height: 1.5em;>真实的配置和生产环境中，我们只需要fonts文件夹和style.css，如果你选择兼容IE，那么还有一个IE文件夹也是需要的。我来说说<strong>selection.json</strong>是干什么的，<strong>这个很重要！</strong></p>
+<p style=line-height: 1.5em;>如果你现在想添加图标怎么办？如果icomoon网站还没被你关闭的话，你还可以像刚才说的那样import icons ，但是如果关闭的话。你的工程项目就木有了。icomoon不会保存你的工程，因为这项服务是要收费的<img src=http://img.baidu.com/hi/face/i_f08.gif>。不过没关系，icomoon很人性化的给你<strong style=white-space: normal;>selection.json</strong>就是你的工程的配置文件。</p>
+<p>还记得第四部我说的吗？可以导入工程！（原图借用一下，忽略箭头）选择import project</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438476303975315.png title=1438476303975315.png alt=blob.png style=white-space: normal;></p>
+<p>17.第17步：导入已有的工程，如果网站还没被你关闭，导入工程是看不到效果的，因为工程就在那里。。。</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438479348577314.png title=1438479348577314.png alt=blob.png width=673 height=40 style=width: 673px; height: 40px;></p>
+<p>模拟情景：一个月后，我觉得图标字库不够用了，好的，来导入工程，load一下。。</p>
+<p><img src=http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150802/1438479461409232.png title=1438479461409232.png alt=blob.png width=481 height=200 style=width: 481px; height: 200px;></p>
+<p>哇塞，我又可以添加字体了！</p>
+<p style=line-height: 1.5em;>后话：本来说是制作图标字库与使用俩个教程，但想想使用还是很简单的，而且icomoon提供下载的压缩包里面的demo.html 演示的十分完美，如何使用我相信大家身为前端开发工程师是不会有问题的。<img src=http://img.baidu.com/hi/face/i_f01.gif></p>	1		2015/10/16 00:00:00	2016/10/9 21:25:26

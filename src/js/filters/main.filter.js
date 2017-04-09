@@ -31,8 +31,21 @@ hejie.filter('midRange', function() {
 
 hejie.filter("timeago", function () {
     return function (input) {
-        var timeagoInstance = timeago();
-        return timeagoInstance.format(input, 'zh_CN');
+        var old = new Date(parseInt(input)),
+            years = new Date().getFullYear() - old.getFullYear();
+        if (years >= 1) {
+            if (years === 1) {
+                years = "去年";
+            } else if (years == 2) {
+                years = "前年";
+            } else {
+                years = years + "年前";
+            }
+            return years +  (old.getMonth() + 1) + "月" + old.getDate() + "号";
+        } else {
+            var timeagoInstance = timeago();
+            return timeagoInstance.format(input, 'zh_CN');
+        }
     }
 });
 

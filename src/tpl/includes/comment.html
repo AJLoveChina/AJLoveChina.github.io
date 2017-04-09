@@ -9,7 +9,7 @@
             <h4 class="media-heading title">{{item.name}} <small>于 {{item.date|timeago}}--{{item.date|date:"HH:mm"}}</small></h4>
             <span class="content">
                 {{item.content}}
-                <a href="javascript:;" style="float:right;color:#aaa;" ng-click="reply(item)" class="iconfont" title="回复">&#xe603;</a>
+                <a href="javascript:;" style="float:right;color:#aaa;" ng-click="reply(item, item.id)" class="iconfont" title="回复">&#xe603;</a>
             </span>
 
             <div class="media" ng-repeat="item2 in item.data">
@@ -19,10 +19,9 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading title">{{item2.name}}</h4>
+                    <h4 class="media-heading title">{{item2.name}} <small>评论</small> {{item.name}}</h4>
                     <span class="content">
                         {{item2.content}}
-                        <a href="javascript:;">回复</a>
                     </span>
                 </div>
             </div>
