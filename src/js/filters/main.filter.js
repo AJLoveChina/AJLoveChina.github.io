@@ -28,3 +28,10 @@ hejie.filter('midRange', function() {
         return list;
     };
 });
+
+hejie.filter("timeago", function () {
+    return function (input) {
+        var timeagoInstance = timeago();
+        return timeagoInstance.format(input, 'zh_CN');
+    }
+})

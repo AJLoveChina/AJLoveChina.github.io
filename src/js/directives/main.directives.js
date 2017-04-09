@@ -34,3 +34,31 @@ hejie.directive("blogShow", function () {
         }
     }
 })
+
+
+hejie.directive("weather", function () {
+    return {
+        restrict : "A",
+        link : function (scope, ele, attr) {
+            var val = scope.$eval(attr.weather);
+            var result = "&#xe6df;"; // sun
+            switch (val) {
+                case "rain":
+                    result = "&#xe604;";
+                    break;
+                case "cloud":
+                    result = "&#xe653;";
+                    break;
+                case "snow":
+                    result = "&#xe645;";
+                    break;
+                case "sun":
+                default:
+                    result = "&#xe6df;";
+                    break;
+            }
+            ele.css("font-family", "iconfont");
+            ele.html(result);
+        }
+    }
+});

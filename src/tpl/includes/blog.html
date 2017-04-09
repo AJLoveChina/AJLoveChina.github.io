@@ -1,14 +1,17 @@
 <div class="panel panel-default blog">
     <div class="panel-heading">{{item.title}}</div>
     <div class="panel-body min-height-500">
-        <p>发布时间:{{item.createTime|date:"yy"}}</p>
+        <p>
+            发表与：{{item.createTime|timeago}} -- {{item.createTime|date:"HH:mm"}}
+             | 天气:<span weather="item.weather"></span>
+        </p>
         <div ng-include="item.url"></div>
     </div>
     <div class="panel-footer">
-                    <span ng-repeat="topic in item.topics">
-                        <span class=" label label-default">
-                            {{topic}}
-                        </span>&nbsp;
-                    </span>
+        <span ng-repeat="topic in item.topics">
+            <span class=" label label-default">
+                {{topic}}
+            </span>&nbsp;
+        </span>
     </div>
 </div>
