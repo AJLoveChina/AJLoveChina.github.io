@@ -59,10 +59,22 @@ hejie.service("commonService", function () {
             layer.close(parseInt(jDom.data("pop-zIndex")));
         }
     };
-    
+
     this.layerMsg = function (info) {
         layer.msg(info, {
-            time : 5000
+            time: 5000
         });
+    };
+
+    this.layerOpen = function (params) {
+        var _params = _.extend({
+            type: 1,
+            content: "",
+            area: "400px",
+            title: "面板"
+        }, params);
+
+        var index = layer.open(_params);
+        params.content.data("pop-zIndex", index);
     }
 });

@@ -1,5 +1,5 @@
 <div class="hejie-comments" style="padding: 0 10px 20px;">
-    <div class="media" ng-repeat="item in items">
+    <div class="media comment" ng-repeat="item in items">
         <div class="media-left">
             <a href="javascript:;">
                 <img class="media-object img" ng-src="{{item.img|userImg}}" alt="{{item.name}}">
@@ -7,7 +7,10 @@
         </div>
         <div class="media-body">
             <h4 class="media-heading title">{{item.name}} <small>于 {{item.date|timeago}}--{{item.date|date:"HH:mm"}}</small></h4>
-            <span class="content">{{item.content}}</span>
+            <span class="content">
+                {{item.content}}
+                <a href="javascript:;" style="float:right;color:#aaa;" ng-click="reply(item)" class="iconfont" title="回复">&#xe603;</a>
+            </span>
 
             <div class="media" ng-repeat="item2 in item.data">
                 <div class="media-left">
@@ -17,7 +20,10 @@
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading title">{{item2.name}}</h4>
-                    <span class="content">{{item2.content}}</span>
+                    <span class="content">
+                        {{item2.content}}
+                        <a href="javascript:;">回复</a>
+                    </span>
                 </div>
             </div>
 

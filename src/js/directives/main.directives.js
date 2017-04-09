@@ -68,12 +68,13 @@ hejie.directive("comment", function () {
         restrict: "E",
         templateUrl: "src/tpl/includes/comment.html",
         scope: {
-            items: "=items"
+            items: "=items",
+            reply : "=reply"
         }
     }
 });
 
-hejie.directive("showPop", function () {
+hejie.directive("showPop", function (commonService, $rootScope) {
     return function (scope, ele, attrs) {
         ele.on("click", function () {
             var selector = attrs.showPop,
@@ -81,13 +82,13 @@ hejie.directive("showPop", function () {
                 title = attrs.title;
 
             var dom = $(selector);
-            var index = layer.open({
+            commonService.layerOpen({
                 type: 1,
                 content: dom,
                 area: width + "px",
                 title: title
             });
-            dom.data("pop-zIndex", index);
+            $rootScope.$broadcast("event.showPop." + attrs.showPop.replace(/[^\w]/g, ""));
         });
     }
 });
