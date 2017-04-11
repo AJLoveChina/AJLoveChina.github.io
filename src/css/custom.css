@@ -1,6 +1,11 @@
 .blog img {
   max-width: 100%;
 }
+.active {
+  color: mediumpurple!important;
+  font-weight: bold;
+  text-shadow: orange 0 0 10px;
+}
 .hejie-comments .img {
   width: 40px;
   height: 40px;
