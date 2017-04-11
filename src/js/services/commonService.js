@@ -5,7 +5,7 @@
 
 hejie.service("commonService", function () {
     this.config = {
-        host : "http://localhost:3000",
+        host : location.host.indexOf("localhost") !== -1 ? "http://localhost:3000" : "http://nigeerhuo.com:3000",
         ajax : {
             success : 1,
             error : 0
