@@ -3,17 +3,22 @@
        <div class="col-md-7">
 
        </div>
-        <div class="col-md-5 background-white">
+        <div class="col-md-5">
 
-            <div class="page-header">
-                <h3>对hejie说点什么吧~ <small><br>您并不需要登陆</small></h3>
-                <button show-pop="#comment-write-panel" width="480" title="写留言"
-                        class="btn btn-warning btn-block btn-group-xs">Leave A Message</button>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="page-header">
+                        <h3>对hejie说点什么吧~ <small><br>您并不需要登陆</small></h3>
+                        <button show-pop="#comment-write-panel" width="480" title="写留言"
+                                class="btn btn-warning btn-block btn-group-xs">Leave A Message</button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <pagination page="curPage" max-page="maxPage" on-click="goPage"></pagination>
+                    <comment items="comments" reply="reply"></comment>
+                    <pagination page="curPage" max-page="maxPage" on-click="goPage"></pagination>
+                </div>
             </div>
-
-            <pagination page="curPage" max-page="maxPage" on-click="goPage"></pagination>
-            <comment items="comments" reply="reply"></comment>
-            <pagination page="curPage" max-page="maxPage" on-click="goPage"></pagination>
         </div>
     </div>
 </div>

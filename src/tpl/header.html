@@ -1,11 +1,22 @@
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a href="#/home" class="navbar-brand">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="glyphicon glyphicon-chevron-down"></span>
+            </button>
+            <a href="#/home" class="navbar-brand" >
                 <em class="glyphicon glyphicon-tree-deciduous"></em>
             </a>
+            <a href="javascript:;" class="navbar-brand visible-xs" ui-sref="me" ui-sref-active="active">Me</a>
+            <a href="javascript:;" class="navbar-brand visible-xs" ui-sref="message" ui-sref-active="active">Message</a>
+
         </div>
-        <div class="collapse navbar-collapse">
+
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
                     <a href="javascript:;" ui-sref="home" ui-sref-active="active">Home</a>
@@ -17,7 +28,7 @@
                     <a href="javascript:;" ui-sref="message" ui-sref-active="active">Message</a>
                 </li>
             </ul>
-            <p class="navbar-text  navbar-right">I am hejie2.0</p>
+            <p class="navbar-text  navbar-right" style="color:#ccc;">I am hejie2.0</p>
         </div>
     </div>
 </nav>
