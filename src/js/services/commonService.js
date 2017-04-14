@@ -14,20 +14,29 @@ hejie.service("commonService", function () {
             ajax : "亲, 网络异常了~~请待会试试吧~~(づ￣3￣)づ╭❤～"
         }
     };
+
+
+    var _waitingShadowIndexQueue = [];
     /**
      * 显示全屏的等待遮罩
      */
     this.showWaitingShadow = function () {
-        var dom = $("#ajax-waiting-modal");
-        dom.css({zIndex: this.getMaxZindex()});
-        dom.show();
+        _waitingShadowIndexQueue.push({
+            index : layer.load(0, {shade: [0.1, "#fff"]}),
+            timestamp : (new Date()).valueOf()
+        });
     };
 
     /**
      * 隐藏全屏的等待遮罩
      */
     this.hideWaitingShadow = function () {
-        $("#ajax-waiting-modal").fadeOut();
+        _waitingShadowIndexQueue.forEach(function (item) {
+            var interval = new Date().valueOf() - item.timestamp;
+            setTimeout(function () {
+                layer.close(item.index);
+            }, (500 - interval) > 0 ? (500 - interval) : 0);
+        })
     };
 
 
