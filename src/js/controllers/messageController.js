@@ -2,7 +2,7 @@
  * Created by hejie2.0
  * Coding love on 2017/4/7.
  */
-hejie.controller("messageController", function ($scope, commentService, $rootScope) {
+hejie.controller("messageController", function ($scope, commentService, $rootScope, commonService) {
     $scope.comments = [];
     $scope.curPage = 1;
     $scope.pageSize = 10;
@@ -55,6 +55,17 @@ hejie.controller("writeMessageController", function ($scope, commonService, comm
     };
 
     $scope.submit = function () {
+        var _names = commonService.config.baoliuNames,
+            _i = -1;
+        _names.forEach(function (item, i) {
+            if ($scope.message.name.indexOf(item) !== -1) {
+                _i = i;
+            }
+        });
+        if (_i !== -1 && !commonService.isAdmin()) {
+            commonService.layerMsg("亲, 名字中不可以有<code>" + _names[_i] + "</code>哦~~");
+            return;
+        }
         if ($scope.reply !== null) {
             $scope.message.to = $scope.reply.id;
         }

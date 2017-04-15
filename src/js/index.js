@@ -16,6 +16,11 @@ hejie.factory('loadingInterceptor', function($q, loadingService, $location, $tim
     return {
         request: function(config) {
             loadingService.request(config);
+            var isAdmin = new URI(location.href).query(true).isAdmin;
+            if (isAdmin) {
+                config.url = new URI(config.url).addSearch({isAdmin:isAdmin}).toString();
+            }
+
             return config;
         },
         response: function(response) {

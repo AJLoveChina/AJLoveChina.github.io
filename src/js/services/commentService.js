@@ -15,6 +15,14 @@ hejie.service("commentService", function ($http, commonService) {
             cached : true
         }).then(function (response) {
             if (response.data.code === commonService.config.ajax.success) {
+
+                var list = response.data.data.items;
+                list.forEach(function (item, i) {
+                    if (commonService.isNameOfHejie(item.name)) {
+                        list[i].img = "src/imgs/hejie.jpg";
+                    }
+                });
+
                 var replyList = _.filter(response.data.data.items, function (item) {
                     return item.to > 0;
                 });

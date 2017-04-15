@@ -4,6 +4,7 @@
  */
 
 hejie.service("commonService", function () {
+    var _self = this;
     this.config = {
         host : location.host.indexOf("localhost") !== -1 ? "http://localhost:3000" : "http://nigeerhuo.com:3000",
         ajax : {
@@ -12,7 +13,8 @@ hejie.service("commonService", function () {
         },
         errorInfo : {
             ajax : "亲, 网络异常了~~请待会试试吧~~(づ￣3￣)づ╭❤～"
-        }
+        },
+        baoliuNames : ["傲天", "hejie", "何杰", "阿杰"]
     };
 
 
@@ -85,5 +87,22 @@ hejie.service("commonService", function () {
 
         var index = layer.open(_params);
         params.content.data("pop-zIndex", index);
+    };
+
+    /**
+     * @returns {undefined|admin password}
+     */
+    this.isAdmin = function () {
+        return new URI(location.href).query(true).isAdmin;
+    };
+    
+    this.isNameOfHejie = function (name) {
+        var bool = false;
+        this.config.baoliuNames.forEach(function (item, i) {
+            if (name.indexOf(item) !== -1) {
+                bool = true;
+            }
+        });
+        return bool;
     }
 });
