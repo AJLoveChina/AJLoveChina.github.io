@@ -9,7 +9,9 @@
     "koa-bodyparser": "^4.2.0",
     "orm": "^3.2.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack": "^2.4.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
