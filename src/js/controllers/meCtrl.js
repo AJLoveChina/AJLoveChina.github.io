@@ -30,6 +30,11 @@ hejie.controller("meCtrl", function ($scope, $http) {
             method: "GET"
         }).then(function (res) {
 
+            var _default = res.data.timeline.date[0],
+                date = new Date();
+            _default["startTime"] = date.getYear() + "," + (date.getMonth() + 1) + "," + date.getDate() + "," + (date.getHours() + 1) + "," +
+                    date.getMinutes() + "," + date.getSeconds();
+            _default["endTime"] = _default["startTime"];
 
             createStoryJS({
                 type: 'timeline',
@@ -37,6 +42,7 @@ hejie.controller("meCtrl", function ($scope, $http) {
                 height: '600',
                 source: res.data,
                 lang: "zh-cn",
+                start_at_end:true,
                 embed_id: 'my-timeline'
             });
 
