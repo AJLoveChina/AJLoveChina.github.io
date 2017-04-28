@@ -1,0 +1,23 @@
+{
+  "name": "angular-ui-router-styles",
+  "version": "1.1.0",
+  "main": "ui-router-styles.js",
+  "dependencies": {
+    "angular": ">=1.4.9",
+    "angular-ui-router": "^0.2.13"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.9"
+  },
+  "homepage": "https://github.com/manuelmazzuola/angular-ui-router-styles",
+  "_release": "1.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.1.0",
+    "commit": "4685b84fb0e2d143a53ca6b85e93e68f90c3b45a"
+  },
+  "_source": "https://github.com/manuelmazzuola/angular-ui-router-styles.git",
+  "_target": "^1.1.0",
+  "_originalSource": "angular-ui-router-styles",
+  "_direct": true
+}

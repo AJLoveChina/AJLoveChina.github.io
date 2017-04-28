@@ -1,4 +1,4 @@
-var hejie = angular.module("hejie", [ 'ui.router']);
+var hejie = angular.module("hejie", [ 'ui.router', 'oc.lazyLoad']);
 
 hejie.value('loadingService', {
     dom : null,
@@ -64,6 +64,18 @@ hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $lo
         .state('message', {
             url: '/message',
             templateUrl: 'src/tpl/message.html'
+        })
+        .state('editor', {
+            url : '/editor',
+            templateUrl : "src/tpl/editor/editor.html"
+        })
+        .state('editor.ueditor', {
+            url : '/ueditor',
+            templateUrl : "src/tpl/editor/ueditor.html"
+        })
+        .state('editor.quill', {
+            url : '/quill',
+            templateUrl : "src/tpl/editor/quill.html"
         })
 
 

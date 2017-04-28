@@ -24,6 +24,7 @@
     "html5shiv": "^3.7.3",
     "es5-shim": "^4.5.9",
     "chart.js": "^2.5.0",
-    "respond": "Respond#^1.4.2"
+    "respond": "Respond#^1.4.2",
+    "angular-ui-router-styles": "^1.1.0"
   }
 }
