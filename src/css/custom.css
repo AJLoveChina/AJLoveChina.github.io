@@ -9,6 +9,7 @@
 }
 body {
   padding-top: 70px;
+  background-color: #eee;
 }
 .background-white {
   background-color: white;
@@ -154,4 +155,19 @@ body {
   font-weight: bold;
   text-shadow: white 0 0 15px;
   font-size: 30px;
+}
+.hejie-arrow {
+  position: absolute;
+  bottom: -25px;
+  top: auto!important;
+  height: 25px;
+  line-height: 25px;
+  z-index: 9;
+  cursor: pointer;
+}
+.hejie-arrow.hejie-prev {
+  left: 0;
+}
+.hejie-arrow.hejie-next {
+  left: 20px;
 }
