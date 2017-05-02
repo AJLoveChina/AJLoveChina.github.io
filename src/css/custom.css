@@ -165,9 +165,15 @@ body {
   z-index: 9;
   cursor: pointer;
 }
+.hejie-arrow.slick-disabled {
+  color: #ccc;
+}
 .hejie-arrow.hejie-prev {
   left: 0;
 }
 .hejie-arrow.hejie-next {
   left: 20px;
+}
+.slick-slide .panel-body img {
+  display: inline-block;
 }

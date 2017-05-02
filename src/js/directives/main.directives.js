@@ -132,3 +132,59 @@ hejie.directive("stateListPrefix", function ($state) {
         ele.html(ul);
     }
 });
+
+hejie.directive("tutotial", function ($http, $ocLazyLoad) {
+    return function (scope, ele, attrs) {
+        $http({
+            url : attrs.tutotial,
+            method : "GET",
+            cache : true
+        }).then(function (res) {
+            var json = res.data;
+            var div = $("<div>"),
+                randomCls = _.uniqueId("hejie-slick-dynamic-");
+            div.addClass("panel panel-default");
+            div.addClass(randomCls);
+            json.data.forEach(function (item, i) {
+                var one = $("<div>"),
+                    title = $("<div>"),
+                    content = $("<div>"),
+                    page = $("<div>");
+                title.addClass("panel-heading panel-default");
+                content.addClass("panel-body");
+                page.addClass("badge");
+                page.css("float", "right");
+                if (encodeURIComponent(item.content.replace(/%/g, "")) === item.content.replace(/%/g, "")) {
+                    item.content = decodeURIComponent(item.content);
+                }
+                // Your code here
+                title.html(item.title);
+                content.html(item.content);
+                page.html(i + 1 + "/" + json.data.length);
+                // Your code end
+                one.append(title);
+                one.append(content);
+                title.append(page);
+                div.append(one);
+            });
+
+            ele.append(div);
+
+            $ocLazyLoad.load([
+                "//cdn.bootcss.com/slick-carousel/1.6.0/slick.min.js",
+                "//cdn.bootcss.com/slick-carousel/1.6.0/slick.min.css",
+                "//cdn.bootcss.com/slick-carousel/1.6.0/slick-theme.min.css"
+            ]).then(function () {
+                $("." + randomCls).slick({
+                    arrows : true,
+                    infinite : false,
+                    prevArrow : "<span class='hejie-arrow hejie-prev glyphicon glyphicon-chevron-left'></span>",
+                    nextArrow : "<span class='hejie-arrow hejie-next glyphicon glyphicon-chevron-right'></span>",
+                    dots : true,
+                    lazyLoad : "ondemand",
+                    fade : true
+                });
+            });
+        })
+    }
+});

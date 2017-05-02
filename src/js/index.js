@@ -85,6 +85,10 @@ hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $lo
             url : '/slick',
             templateUrl : "src/tpl/test/slick.html"
         })
+        .state('test.encodeXDecode', {
+            url : '/encodeXDecode',
+            templateUrl : "src/tpl/test/encodeXdecode.html"
+        })
 
 
 });
