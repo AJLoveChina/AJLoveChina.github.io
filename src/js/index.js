@@ -1,4 +1,4 @@
-var hejie = angular.module("hejie", [ 'ui.router', 'oc.lazyLoad']);
+var hejie = angular.module("hejie", [ 'ui.router', 'oc.lazyLoad', 'ngSanitize']);
 
 hejie.value('loadingService', {
     dom : null,

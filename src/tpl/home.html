@@ -18,7 +18,7 @@
                 </a>
                 <a href="javascript:;" ng-repeat="item in ps"
                    class="list-group-item">
-                    <span class="badge">{{item.name}}</span>
+                    <span class="badge" ng-bind-html="item.name"></span>
                     {{item.say}}
                 </a>
             </div>
