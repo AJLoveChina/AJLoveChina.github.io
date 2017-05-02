@@ -77,6 +77,14 @@ hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $lo
             url : '/quill',
             templateUrl : "src/tpl/editor/quill.html"
         })
+        .state('test', {
+            url : '/test',
+            templateUrl : "src/tpl/test.html"
+        })
+        .state('test.slick', {
+            url : '/slick',
+            templateUrl : "src/tpl/test/slick.html"
+        })
 
 
 });

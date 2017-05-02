@@ -107,4 +107,28 @@ hejie.directive("hidePop", function () {
             layer.close(index);
         })
     }
-})
+});
+
+hejie.directive("stateListPrefix", function ($state) {
+    return function (scope, ele, attrs) {
+        var prefix = attrs.stateListPrefix;
+        var result = [];
+        var regExp = new RegExp("^" + prefix + "\.");
+        $state.get().forEach(function (item) {
+            if (regExp.test(item.name)) {
+                result.push(item);
+            }
+        });
+
+        var ul = $("<ul>");
+        result.forEach(function (item) {
+            var li = $("<li>"),
+                a = $("<a>");
+            a.attr("href", "#/" + prefix + item.url);
+            a.html(item.name);
+            li.append(a);
+            ul.append(li);
+        });
+        ele.html(ul);
+    }
+});
