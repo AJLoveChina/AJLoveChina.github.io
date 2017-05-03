@@ -157,6 +157,9 @@ hejie.directive("tutotial", function ($http, $ocLazyLoad) {
                 if (encodeURIComponent(item.content.replace(/%/g, "")) === item.content.replace(/%/g, "")) {
                     item.content = decodeURIComponent(item.content);
                 }
+                content.css({
+                    "min-height": "80px"
+                });
                 // Your code here
                 title.html(item.title);
                 content.html(item.content);
@@ -182,7 +185,8 @@ hejie.directive("tutotial", function ($http, $ocLazyLoad) {
                     nextArrow : "<span class='hejie-arrow hejie-next glyphicon glyphicon-chevron-right'></span>",
                     dots : true,
                     lazyLoad : "ondemand",
-                    fade : true
+                    fade : true,
+                    adaptiveHeight : true
                 });
             });
         })
