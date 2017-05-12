@@ -25,8 +25,9 @@ hejie.controller("meCtrl", function ($scope, $http) {
     ];
 
     $scope.loadTimeLine = function () {
+        var xx = new Date();
         $http({
-            url: "src/data/timeline-data.json",
+            url: "src/data/timeline-data.json?t=" + xx.getFullYear() + (xx.getMonth() + 1) + xx.getDate(),
             method: "GET"
         }).then(function (res) {
 
