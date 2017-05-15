@@ -2,6 +2,15 @@
   "dir": "src/blogs/",
   "blogs": [
     {
+      "createTime": "1494818241854",
+      "content": "github-pages.html",
+      "weather" : "cloud",
+      "topics": [
+        "Github Pages",
+        "个人网站"
+      ],
+      "title": "三分钟创建一个完全免费的个人网站（使用Github Pages)"
+    },{
       "createTime": "1485096322000",
       "content": "zhihu.html",
       "weather" : "rain",
