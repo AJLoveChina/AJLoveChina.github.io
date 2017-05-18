@@ -89,6 +89,10 @@ hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $lo
             url : '/encodeXDecode',
             templateUrl : "src/tpl/test/encodeXdecode.html"
         })
+        .state('test.questionnaire', {
+            url : '/questionnaire',
+            templateUrl : "src/tpl/test/questionnaire.html"
+        })
 
 
 });
