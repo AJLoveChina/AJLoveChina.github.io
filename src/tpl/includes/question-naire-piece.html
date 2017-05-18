@@ -4,8 +4,7 @@
             {{data.cover.title}}
         </div>
         <div class="panel-body min-height-200">
-            <div class="list-group">
-                {{data.cover.content}}
+            <div class="list-group" ng-bind-html="data.cover.content">
             </div>
         </div>
         <div class="panel-footer text-center">

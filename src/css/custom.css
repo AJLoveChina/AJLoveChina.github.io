@@ -177,3 +177,6 @@ body {
 .slick-slide .panel-body img {
   display: inline-block;
 }
+.hejie-hide-top-nav-text .hide-on-hejie-hide-top-nav-text {
+  display: none!important;
+}

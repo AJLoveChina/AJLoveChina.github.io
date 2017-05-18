@@ -93,6 +93,10 @@ hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $lo
             url : '/questionnaire',
             templateUrl : "src/tpl/test/questionnaire.html"
         })
+        .state('519', {
+            url : '/519',
+            templateUrl : "src/tpl/519.html"
+        })
 
 
 });

@@ -292,3 +292,12 @@ hejie.directive("hejieTitle", function () {
         }
     }
 });
+
+hejie.directive("hideTopNavText", function () {
+    return function (scope, ele, attrs) {
+        $(document.body).addClass("hejie-hide-top-nav-text");
+        scope.$on("$destroy", function () {
+            $(document.body).removeClass("hejie-hide-top-nav-text");
+        })
+    }
+})

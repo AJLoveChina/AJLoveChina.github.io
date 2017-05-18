@@ -29,3 +29,8 @@ hejie.controller("userInfoCtrl", function ($scope) {
         }
     ];
 });
+
+
+hejie.controller("questionnaireCtrl", function ($scope, $stateParams) {
+    $scope.path = $stateParams.path;
+});
