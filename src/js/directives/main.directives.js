@@ -277,3 +277,18 @@ hejie.directive("questionnaire", function ($http, $log, $ocLazyLoad) {
         templateUrl : "src/tpl/includes/question-naire-piece.html"
     }
 });
+
+hejie.directive("hejieTitle", function () {
+    return {
+        restrict : "E",
+        link : function (scope, ele, attrs) {
+            var title_cache = document.title;
+            var title = attrs.title;
+            document.title = title;
+
+            scope.$on("$destroy", function () {
+                document.title = title_cache;
+            })
+        }
+    }
+});
