@@ -16,13 +16,19 @@
             {{data.items[index].title}}
             <span style="float:right">{{index + 1}} / {{data.items.length}}</span>
         </div>
-        <div class="panel-body min-height-200">
+        <div class="panel-body min-height-200" ng-if="data.items[index].choices">
             <div class="list-group">
                 <a href="javascript:;"  class="list-group-item" ng-repeat="choice in data.items[index].choices" ng-click="selectThisChoice(data.items[index], choice)">
                     <input type="radio" name="question-naire-name-{{index}}">
                     {{choice}}
                 </a>
             </div>
+        </div>
+        <div class="panel-body min-height-200" ng-if="data.items[index].ask">
+            <div class="list-group">
+                <input class="input-group" ng-model="data.items[index].askInfo" />
+            </div>
+            <button class="btn btn-default btn-group-sm" ng-click="next()">确定</button>
         </div>
         <!--<div class="panel-footer">
         </div>-->

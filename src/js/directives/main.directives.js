@@ -238,6 +238,9 @@ hejie.directive("questionnaire", function ($http, $log, $ocLazyLoad) {
                 scope.selectThisChoice = function (item, choice) {
                     $log.log("Choice : " + JSON.stringify(choice));
                     item.select = choice;
+                    scope.next();
+                };
+                scope.next = function () {
                     scope.index++;
                     if (scope.index === scope.data.items.length) {
                         scope.finished = true;

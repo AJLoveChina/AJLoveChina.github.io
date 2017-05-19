@@ -61,7 +61,18 @@
         "Il n'y a pas de",
         "Yes I have"
       ]
+    },
+    {
+      "title" : "真的是最后一个问题了....",
+      "choices" : [
+        "相信一次"
+      ]
+    },
+    {
+      "title" : "你的微信号是多少哈",
+      "ask" : true
     }
+
 
   ]
 }
