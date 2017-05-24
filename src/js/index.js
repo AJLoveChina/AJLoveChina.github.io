@@ -97,6 +97,10 @@ hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $lo
             url : '/519',
             templateUrl : "src/tpl/519.html"
         })
+        .state('wenjuan', {
+            url : '/wenjuan/:fileName',
+            templateUrl : "src/tpl/wenjuan.html"
+        })
 
 
 });

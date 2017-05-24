@@ -219,62 +219,66 @@ hejie.directive("questionnaire", function ($http, $log, $ocLazyLoad) {
     return {
         restrict : "E",
         link : function (scope, ele, attrs) {
-            var src = attrs.src;
-            $http({
-                url : src,
-                method : "GET",
-                cache : true
-            }).then(function (res) {
-                var data  = res.data;
-                scope.data = data;
-                scope.index = 0;
-                scope.finished = false;
-                if (scope.data.cover) {
-                    scope.isBegin = false;
-                } else {
-                    scope.isBegin = true;
-                }
+            attrs.$observe("src", function () {
+                var src = attrs.src;
+                if(!src) return;
 
-                scope.selectThisChoice = function (item, choice) {
-                    $log.log("Choice : " + JSON.stringify(choice));
-                    item.select = choice;
-                    scope.next();
-                };
-                scope.next = function () {
-                    scope.index++;
-                    if (scope.index === scope.data.items.length) {
-                        scope.finished = true;
-                        scope.$broadcast("event.saveData", scope.data);
+                $http({
+                    url : src,
+                    method : "GET",
+                    cache : true
+                }).then(function (res) {
+                    var data  = res.data;
+                    scope.data = data;
+                    scope.index = 0;
+                    scope.finished = false;
+                    if (scope.data.cover) {
+                        scope.isBegin = false;
+                    } else {
+                        scope.isBegin = true;
                     }
-                };
-                scope.begin = function () {
-                    scope.isBegin = true;
-                };
 
-                $ocLazyLoad.load([
-                    "src/js/lib/bmob-min.js"
-                ]).then(function () {
-                    Bmob.initialize("261f72b925003b997332d1b2513788a1", "b873bbaddc032288425c025ab112c87c");
+                    scope.selectThisChoice = function (item, choice) {
+                        $log.log("Choice : " + JSON.stringify(choice));
+                        item.select = choice;
+                        scope.next();
+                    };
+                    scope.next = function () {
+                        scope.index++;
+                        if (scope.index === scope.data.items.length) {
+                            scope.finished = true;
+                            scope.$broadcast("event.saveData", scope.data);
+                        }
+                    };
+                    scope.begin = function () {
+                        scope.isBegin = true;
+                    };
 
-                    scope.$on("event.saveData", function (ev, data) {
-                        $log.log(data);
-                        var Questionnaire = Bmob.Object.extend("questionnaire");
-                        var question = new Questionnaire();
-                        question.set("time", moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
-                        question.set("data", JSON.stringify(data));
-                        question.set("tag", scope.data.tag);
+                    $ocLazyLoad.load([
+                        "src/js/lib/bmob-min.js"
+                    ]).then(function () {
+                        Bmob.initialize("261f72b925003b997332d1b2513788a1", "b873bbaddc032288425c025ab112c87c");
 
-                        question.save(null, {
-                            success: function(object) {
-                                $log.log("create object success, object id:"+object.id);
-                            },
-                            error: function(model, error) {
-                                $log.log("create object fail");
-                            }
-                        });
+                        scope.$on("event.saveData", function (ev, data) {
+                            $log.log(data);
+                            var Questionnaire = Bmob.Object.extend("questionnaire");
+                            var question = new Questionnaire();
+                            question.set("time", moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
+                            question.set("data", JSON.stringify(data));
+                            question.set("tag", scope.data.tag);
+
+                            question.save(null, {
+                                success: function(object) {
+                                    $log.log("create object success, object id:"+object.id);
+                                },
+                                error: function(model, error) {
+                                    $log.log("create object fail");
+                                }
+                            });
+                        })
                     })
-                })
 
+                });
             });
         },
         templateUrl : "src/tpl/includes/question-naire-piece.html"
