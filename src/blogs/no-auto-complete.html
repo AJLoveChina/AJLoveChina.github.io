@@ -1,0 +1,32 @@
+<p>
+    现代浏览器默认都会保存用户登录页的用户名和密码， 但是我们开发者往往不希望浏览器的这样行为，其中一个重要原因就是明明用户没有勾选记住密码, 但是退出时用户名和密码依然保留在表单中，所以办公室常见撕逼情景。
+</p>
+<blockquote>
+    <p style="white-space: normal;">
+        测试：你这是个bug~~
+    </p>
+    <p style="white-space: normal;">
+        开发：这是浏览器的默认行为
+    </p>
+</blockquote>
+<p>
+    有一个很简单的方法可以在html代码中取消浏览器的该默认行为， 只需要在form标签添加<code>autocomplete=&quot;off&quot;</code>，告诉浏览器不要自动完成表单信息。
+</p>
+<pre class="brush:html;toolbar:false">&lt;form autocomplete=&quot;off&quot;&gt;
+    &lt;!-- Your code here --&gt;
+&lt;/form&gt;</pre>
+<p>
+    但是，这并不能兼容所有主流的现代浏览器，比如说最新的（截止2017.05.25）Chrome浏览器就不鸟上面这个做法。所以在此基础上再加上下面俩行代码：
+</p>
+<pre class="brush:html;toolbar:false">&lt;form autocomplete=&quot;off&quot;&gt;
+    &lt;input style=&quot;display:none&quot;&gt;
+    &lt;input type=&quot;password&quot; style=&quot;display:none&quot;&gt;
+
+    &lt;!-- Your code here --&gt;
+&lt;/form&gt;</pre>
+<p>
+    是的，这是一个小trick。然鹅这个方法灰常有效，测试发现主流的国内浏览器以及Chrome，IE都是支持的。
+</p>
+<p>
+    其实我也只是测试一下而已， 方法来自<a target="_blank" href="https://stackoverflow.com/questions/12374442/chrome-browser-ignoring-autocomplete-off">Stack Overflow</a><br/>
+</p>
