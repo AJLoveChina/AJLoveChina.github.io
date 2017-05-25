@@ -21,6 +21,11 @@ hejie.factory('loadingInterceptor', function($q, loadingService, $location, $tim
                 config.url = new URI(config.url).addSearch({isAdmin:isAdmin}).toString();
             }
 
+            if (config.method.toUpperCase() === "GET" && !config.cache) {
+                // 解决在IE低版本浏览器会有缓存的问题
+                config.url = new URI(config.url).addSearch({"_date" : moment(new Date()).format("YYYYMMDD")}).toString()
+            }
+
             return config;
         },
         response: function(response) {
