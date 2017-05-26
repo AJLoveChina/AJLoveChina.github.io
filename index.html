@@ -34,60 +34,104 @@
     <![endif]-->
 
     <!-- lib-->
-    <script src="//cdn.bootcss.com/moment.js/2.18.1/moment.min.js"></script>
-    <!--<script src="bower_components/moment/min/moment.min.js"></script>-->
-    <script src="http://cdn.bootcss.com/es5-shim/4.5.9/es5-sham.min.js"></script>
-    <script src="http://cdn.bootcss.com/es5-shim/4.5.9/es5-shim.min.js"></script>
-    <!--<script src="bower_components/es5-shim/es5-sham.min.js"></script>-->
-    <!--<script src="bower_components/es5-shim/es5-shim.min.js"></script>-->
-    <script src="http://apps.bdimg.com/libs/underscore.js/1.7.0/underscore-min.js"></script>
-    <!--<script src="bower_components/underscore/underscore-min.js"></script>-->
-    <script src="http://apps.bdimg.com/libs/jquery/1.10.0/jquery.min.js"></script>
-    <!--<script src="bower_components/jquery/jquery.min.js"></script>-->
-    <script src="http://cdn.bootcss.com/timelinejs/2.36.0/js/storyjs-embed.js"></script>
-    <!--<script src="bower_components/timeago.js/dist/timeago.min.js"></script>-->
-    <script src="http://apps.bdimg.com/libs/html5shiv/r29/html5.min.js"></script>
-    <!--<script src="bower_components/html5shiv/dist/html5shiv.min.js"></script>-->
-    <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <!--<script src="bower_components/respond/dest/respond.min.js"></script>-->
-    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
-    <script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
-    <!--<script src="bower_components/angular/angular.js"></script>-->
-    <script src="http://apps.bdimg.com/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-    <!--<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>-->
-    <script src="//cdn.bootcss.com/angular-sanitize/1.2.32/angular-sanitize.min.js"></script>
-    <!--<script src="bower_components/angular-sanitize.min.js"></script>-->
-    <script src="//cdn.bootcss.com/oclazyload/1.1.0/ocLazyLoad.min.js"></script>
-    <!--<script src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>-->
-    <script src="http://apps.bdimg.com/libs/layer/2.1/layer.js"></script>
-    <!--<script src="bower_components/layer/layer-v2.4.js"></script>-->
-    <script src="http://cdn.bootcss.com/timeago.js/3.0.1/timeago.min.js"></script>
-    <!--<script src="bower_components/timeago.js/dist/timeago.min.js"></script>-->
-    <script src="http://apps.bdimg.com/libs/URI.js/1.7.2/URI.min.js"></script>
-    <!--<script src="bower_components/urijs/src/URI.min.js"></script>-->
+    <script>
+        function loadScript(url, callback){
 
-    <script src="src/js/index.js?t=20170502"></script>
-    <!-- controllers -->
-    <script src="src/js/controllers/homeController.js?t=20170502"></script>
-    <script src="src/js/controllers/blogListController.js?t=20170502"></script>
-    <script src="src/js/controllers/userInfoCtrl.js?t=20170502"></script>
-    <script src="src/js/controllers/meCtrl.js?t=20170502"></script>
-    <script src="src/js/controllers/messageController.js?t=20170502"></script>
-    <script src="src/js/controllers/editorController.js?t=20170502"></script>
-    <script src="src/js/controllers/testController.js?t=20170502"></script>
+            var script = document.createElement("script")
+            script.type = "text/javascript";
 
+            if (script.readyState){  //IE
+                script.onreadystatechange = function(){
+                    if (script.readyState == "loaded" ||
+                            script.readyState == "complete"){
+                        script.onreadystatechange = null;
+                        callback();
+                    }
+                };
+            } else {  //Others
+                script.onload = function(){
+                    callback();
+                };
+            }
 
-    <!-- services-->
-    <script src="src/js/services/blogService.js?t=20170502"></script>
-    <script src="src/js/services/commonService.js?t=20170502"></script>
-    <script src="src/js/services/commentService.js?t=20170502"></script>
+            script.src = url;
+            document.getElementsByTagName("head")[0].appendChild(script);
+        }
 
-    <!-- directives-->
-    <script src="src/js/directives/main.directives.js?t=20170502"></script>
+        function loadAll(list) {
+            if (list.length <= 0) return;
+            var url = list.shift();
+            loadScript(url, function () {
+                loadAll(list);
+            })
+        }
 
-    <!-- filters -->
-    <script src="src/js/filters/main.filter.js?t=20170502"></script>
+        var isLocal = false;
+        try {
+            isLocal = location.hostname.toLowerCase() === 'localhost';
+        } catch (ex){}
+
+        var libs = {
+            server : [
+                "http://cdn.bootcss.com/moment.js/2.18.1/moment.min.js",
+                "http://cdn.bootcss.com/es5-shim/4.5.9/es5-sham.min.js",
+                "http://cdn.bootcss.com/es5-shim/4.5.9/es5-shim.min.js",
+                "http://apps.bdimg.com/libs/underscore.js/1.7.0/underscore-min.js",
+                "http://apps.bdimg.com/libs/jquery/1.10.0/jquery.min.js",
+                "http://cdn.bootcss.com/timelinejs/2.36.0/js/storyjs-embed.js",
+                "http://apps.bdimg.com/libs/html5shiv/r29/html5.min.js",
+                "http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js",
+                "http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js",
+                "http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js",
+                "http://apps.bdimg.com/libs/angular-ui-router/0.2.15/angular-ui-router.min.js",
+                "http://cdn.bootcss.com/angular-sanitize/1.2.32/angular-sanitize.min.js",
+                "http://cdn.bootcss.com/oclazyload/1.1.0/ocLazyLoad.min.js",
+                "http://apps.bdimg.com/libs/layer/2.1/layer.js",
+                "http://cdn.bootcss.com/timeago.js/3.0.1/timeago.min.js",
+                "http://apps.bdimg.com/libs/URI.js/1.7.2/URI.min.js"
+            ],
+            local : [
+                "bower_components/moment/min/moment.min.js",
+                "bower_components/es5-shim/es5-sham.min.js",
+                "bower_components/es5-shim/es5-shim.min.js",
+                "bower_components/underscore/underscore-min.js",
+                "bower_components/jquery/jquery.min.js",
+                "bower_components/TimelineJS/build/js/storyjs-embed.js",
+                "bower_components/html5shiv/dist/html5shiv.min.js",
+                "bower_components/respond/dest/respond.min.js",
+                "bower_components/bootstrap/dist/js/bootstrap.min.js",
+                "bower_components/angular/angular.js",
+                "bower_components/angular-ui-router/release/angular-ui-router.js",
+                "bower_components/angular-sanitize.min.js",
+                "bower_components/oclazyload/dist/ocLazyLoad.min.js",
+                "bower_components/layer/layer-v2.4.js",
+                "bower_components/timeago.js/dist/timeago.min.js",
+                "bower_components/urijs/src/URI.min.js"
+            ]
+        };
+        var list = [
+            "src/js/index.js?t=20170502",
+            "src/js/controllers/homeController.js?t=20170502",
+            "src/js/controllers/blogListController.js?t=20170502",
+            "src/js/controllers/userInfoCtrl.js?t=20170502",
+            "src/js/controllers/meCtrl.js?t=20170502",
+            "src/js/controllers/messageController.js?t=20170502",
+            "src/js/controllers/editorController.js?t=20170502",
+            "src/js/controllers/testController.js?t=20170502",
+            "src/js/services/blogService.js?t=20170502",
+            "src/js/services/commonService.js?t=20170502",
+            "src/js/services/commentService.js?t=20170502",
+            "src/js/directives/main.directives.js?t=20170502",
+            "src/js/filters/main.filter.js?t=20170502"
+        ];
+        if (isLocal) {
+            list = libs.local.concat(list);
+        } else {
+            list = libs.server.concat(list);
+        }
+
+        loadAll(list);
+    </script>
 </head>
 <body>
 
