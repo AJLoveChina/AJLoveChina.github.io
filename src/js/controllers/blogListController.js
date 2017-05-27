@@ -29,3 +29,12 @@ hejie.controller("blogListCtrl", function ($scope, blogService) {
         $scope.refresh();
     }
 });
+
+hejie.controller("blogOneCtrl", function ($scope, $stateParams, blogService) {
+    var fileName = $stateParams.fileName;
+    blogService.getBlogByContent(fileName, function (err, item) {
+        if (!err) {
+            $scope.item = item;
+        }
+    });
+});

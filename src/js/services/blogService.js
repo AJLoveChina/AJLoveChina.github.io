@@ -31,6 +31,24 @@ hejie.service("blogService", function ($http) {
         });
     };
 
+    this.getBlogByContent = function (content, fn) {
+        this.getBlogsConfig().then(function (res) {
+            var data = res.data;
+            var isFind = false;
+            data.blogs.forEach(function (item, i, items) {
+                if (item.content == content) {
+                    fn(null, item);
+                    isFind = true;
+                }
+            });
+            if (!isFind) {
+                fn(new Error("Not found blog of " + content), null);
+            }
+        }).catch(function (res) {
+            fn(new Error(res.statusText), null);
+        });
+    };
+
     this.getTotal = function (fn) {
         this.getBlogsConfig().then(function (res) {
             fn(res.data.blogs.length);

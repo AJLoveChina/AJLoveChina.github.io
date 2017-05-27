@@ -57,4 +57,10 @@ hejie.filter("userImg", function () {
         }
         return "src/imgs/default-user-boy.jpg";
     }
-})
+});
+
+hejie.filter("blogContent2Url", function () {
+    return function (input) {
+        return "src/blogs/" + input;
+    }
+});

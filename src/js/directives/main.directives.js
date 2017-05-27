@@ -30,7 +30,8 @@ hejie.directive("blogShow", function () {
         restrict: "E",
         templateUrl: "src/tpl/includes/blog.html",
         scope: {
-            item: "=item"
+            item: "=item",
+            titleLink : "="
         }
     }
 });

@@ -1,4 +1,4 @@
-var hejie = angular.module("hejie", [ 'ui.router', 'oc.lazyLoad', 'ngSanitize']);
+var hejie = angular.module("hejie", [ 'ui.router']); //, 'oc.lazyLoad', 'ngSanitize'
 
 hejie.value('loadingService', {
     dom : null,
@@ -16,11 +16,13 @@ hejie.factory('loadingInterceptor', function($q, loadingService, $location, $tim
     return {
         request: function(config) {
             loadingService.request(config);
-            var isAdmin = new URI(location.href).query(true).isAdmin;
-            if (isAdmin) {
-                config.url = new URI(config.url).addSearch({isAdmin:isAdmin}).toString();
-            }
 
+            try {
+                var isAdmin = new URI(location.href).query(true).isAdmin;
+                if (isAdmin) {
+                    config.url = new URI(config.url).addSearch({isAdmin:isAdmin}).toString();
+                }
+            } catch (ex) {}
             return config;
         },
         response: function(response) {
@@ -97,6 +99,11 @@ hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $lo
             url : '/519',
             templateUrl : "src/tpl/519.html"
         })
+        .state('blog', {
+            url : '/blog/:fileName',
+            templateUrl : "src/tpl/blog.html"
+        })
+
 
 
 });
