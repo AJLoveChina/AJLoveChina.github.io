@@ -51,3 +51,8 @@ hejie.controller("meCtrl", function ($scope, $http) {
     };
     $scope.loadTimeLine();
 });
+
+hejie.controller("wenjuanCtrl", function ($scope, $stateParams) {
+    $scope.fileName = "src/data/questionnaire/" + $stateParams.fileName + ".json";
+
+});

@@ -23,6 +23,10 @@
       "choices" : [
         "who knows", "xxx", "I donot know"
       ]
+    },
+    {
+      "title" : "你的微信号是多少撒",
+      "ask" : true
     }
   ]
 }

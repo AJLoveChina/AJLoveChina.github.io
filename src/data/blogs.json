@@ -2,6 +2,17 @@
   "dir": "src/blogs/",
   "blogs": [
     {
+      "createTime": "1495677417974",
+      "content": "no-auto-complete.html",
+      "weather" : "sun",
+      "topics": [
+        "Auto Complete",
+        "Trick for browser",
+        "signin form"
+      ],
+      "title": "一个灰常实用的让浏览器不要自动完成表单的小技巧（Browser Ignoring AutoComplete=Off fixed）"
+    },
+    {
       "createTime": "1494818241854",
       "content": "github-pages.html",
       "weather" : "cloud",

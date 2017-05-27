@@ -1,4 +1,4 @@
-var hejie = angular.module("hejie", [ 'ui.router']); //, 'oc.lazyLoad', 'ngSanitize'
+var hejie = angular.module("hejie", [ 'ui.router', 'oc.lazyLoad', 'ngSanitize']);
 
 hejie.value('loadingService', {
     dom : null,
@@ -23,6 +23,11 @@ hejie.factory('loadingInterceptor', function($q, loadingService, $location, $tim
                     config.url = new URI(config.url).addSearch({isAdmin:isAdmin}).toString();
                 }
             } catch (ex) {}
+            if (config.method.toUpperCase() === "GET" && !config.cache) {
+                // 解决在IE低版本浏览器会有缓存的问题
+                config.url = new URI(config.url).addSearch({"_date" : moment(new Date()).format("YYYYMMDD")}).toString()
+            }
+
             return config;
         },
         response: function(response) {
@@ -103,7 +108,10 @@ hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $lo
             url : '/blog/:fileName',
             templateUrl : "src/tpl/blog.html"
         })
-
+        .state('wenjuan', {
+            url : '/wenjuan/:fileName',
+            templateUrl : "src/tpl/wenjuan.html"
+        })
 
 
 });
