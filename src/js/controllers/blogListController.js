@@ -30,6 +30,15 @@ hejie.controller("blogListCtrl", function ($scope, blogService) {
     }
 });
 
+hejie.controller("wenzhangTitleListCtrl", function ($scope, blogService) {
+    $scope.items = [];
+
+    blogService.getAllBlogs(function (err, res) {
+        if (!err)
+            $scope.items = res.blogs;
+    })
+
+});
 hejie.controller("blogOneCtrl", function ($scope, $stateParams, blogService) {
     var fileName = $stateParams.fileName;
     blogService.getBlogByContent(fileName, function (err, item) {

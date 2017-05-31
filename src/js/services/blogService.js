@@ -49,6 +49,19 @@ hejie.service("blogService", function ($http) {
         });
     };
 
+
+    this.getAllBlogs = function (fn) {
+        this.getBlogsConfig().then(function (res) {
+            var data = res.data;
+            data.blogs.forEach(function (item, i, items) {
+                items[i].url = data.dir + item.content
+            });
+            fn(null, data);
+        }).catch(function (res) {
+            fn(new Error(res.statusText), null);
+        });
+    };
+
     this.getTotal = function (fn) {
         this.getBlogsConfig().then(function (res) {
             fn(res.data.blogs.length);
