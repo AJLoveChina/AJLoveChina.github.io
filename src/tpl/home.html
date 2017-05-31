@@ -53,11 +53,18 @@
                 <a href="javascript:;" class="list-group-item disabled">
                     文章列表
                 </a>
-                <a href="javascript:;" ng-repeat="item in items"
-                   class="list-group-item">
-                    {{$index + 1}}.
-                    {{item.title}}
-                </a>
+                <span ng-repeat="item in items">
+                     <a href="javascript:;"
+                        class="list-group-item" ui-sref="blog({fileName : item.content})"
+                        ng-if="!item.isCutline">
+                        {{item.index}}.
+                        {{item.title}}
+                    </a>
+                    <a href="javascript:;" ng-if="item.isCutline" class="list-group-item disabled">
+                        {{item.title}}年
+                    </a>
+                </span>
+
             </div>
         </div>
     </div>

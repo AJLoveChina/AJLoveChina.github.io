@@ -34,8 +34,28 @@ hejie.controller("wenzhangTitleListCtrl", function ($scope, blogService) {
     $scope.items = [];
 
     blogService.getAllBlogs(function (err, res) {
-        if (!err)
-            $scope.items = res.blogs;
+        if (!err) {
+            var list = [],
+                year = 0,
+                index = 1;
+            res.blogs.sort(function (a, b) {
+                return b.createTime - a.createTime;
+            });
+            res.blogs.forEach(function (item) {
+                if (moment(parseInt(item.createTime)).year() !== year) {
+                    index = 1;
+                    year = moment(parseInt(item.createTime)).year();
+                    list.push({
+                        isCutline: true,
+                        title: year
+                    });
+                }
+                item.index = index++;
+                list.push(item);
+            });
+            $scope.items = list;
+
+        }
     })
 
 });
