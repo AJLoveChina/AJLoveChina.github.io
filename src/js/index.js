@@ -64,6 +64,10 @@ hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $lo
             url: '/home',
             templateUrl: 'src/tpl/home.html'
         })
+        .state('homePage', {
+            url: '/home/page/:page',
+            templateUrl: 'src/tpl/home.html'
+        })
         .state('me', {
             url: '/me',
             templateUrl: 'src/tpl/me.html'

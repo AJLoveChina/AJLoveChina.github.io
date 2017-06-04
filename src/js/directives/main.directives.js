@@ -20,7 +20,8 @@ hejie.directive("pagination", function () {
        scope: {
            page : '=page',
            maxPage : '=',
-           onClick : "="
+           onClick : "=",
+           getHref : "="
        }
    }
 });

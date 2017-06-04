@@ -2,13 +2,13 @@
     <div class="row">
         <div class="col-md-8" ng-controller="blogListCtrl">
 
-            <pagination page="curPage" max-page="maxPage" on-click="goPage"></pagination>
+            <pagination page="curPage" max-page="maxPage" get-href="getHref"></pagination>
 
             <div ng-repeat="item in items">
                 <blog-show item="item" title-link="true"></blog-show>
             </div>
 
-            <pagination page="curPage" max-page="maxPage" on-click="goPage"></pagination>
+            <pagination page="curPage" max-page="maxPage" get-href="getHref"></pagination>
 
         </div>
         <div class="col-md-4">
