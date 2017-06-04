@@ -72,18 +72,6 @@ hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $lo
             url: '/message',
             templateUrl: 'src/tpl/message.html'
         })
-        .state('editor', {
-            url : '/editor',
-            templateUrl : "src/tpl/editor/editor.html"
-        })
-        .state('editor.ueditor', {
-            url : '/ueditor',
-            templateUrl : "src/tpl/editor/ueditor.html"
-        })
-        .state('editor.quill', {
-            url : '/quill',
-            templateUrl : "src/tpl/editor/quill.html"
-        })
         .state('test', {
             url : '/test',
             templateUrl : "src/tpl/test.html"
@@ -100,6 +88,24 @@ hejie.config(function($stateProvider, $locationProvider, $urlRouterProvider, $lo
             url : '/questionnaire',
             templateUrl : "src/tpl/test/questionnaire.html"
         })
+        .state('test.qqconnect', {
+            url : '/qqconnect',
+            templateUrl : "src/tpl/test/qqconnect.html"
+        })
+        //
+        // .state('editor', {
+        //     url : '/editor',
+        //     templateUrl : "src/tpl/editor/editor.html"
+        // })
+        .state('test.ueditor', {
+            url : '/ueditor',
+            templateUrl : "src/tpl/editor/ueditor.html"
+        })
+        .state('test.quill', {
+            url : '/quill',
+            templateUrl : "src/tpl/editor/quill.html"
+        })
+
         .state('519', {
             url : '/519',
             templateUrl : "src/tpl/519.html"

@@ -96,7 +96,7 @@ hejie.service("commonService", function () {
     this.isAdmin = function () {
         return new URI(location.href).query(true).isAdmin;
     };
-    
+
     this.isNameOfHejie = function (name) {
         var bool = false;
         this.config.baoliuNames.forEach(function (item, i) {
@@ -105,5 +105,27 @@ hejie.service("commonService", function () {
             }
         });
         return bool;
-    }
+    };
+
+
+    this.random = function (max) {
+        return Math.floor(Math.random() * max);
+    };
+
+    /**
+     * 伪唯一数
+     * @returns {string}
+     */
+    this.guid = function () {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+    };
+
+
 });

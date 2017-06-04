@@ -308,4 +308,61 @@ hejie.directive("hideTopNavText", function () {
             $(document.body).removeClass("hejie-hide-top-nav-text");
         })
     }
-})
+});
+
+
+hejie.directive("ueditor", function ($rootScope, $log, $ocLazyLoad, commonService) {
+    return {
+        restrict : "EA",
+        scope : {
+            model : "="
+        },
+        link : function (scope, ele, attrs) {
+            if (!window.UE) {
+                $log.log("no ue, load ue");
+                $ocLazyLoad.load([
+                    'src/js/ueditor.config.js',
+                    'http://apps.bdimg.com/libs/ueditor/1.4.3.1/ueditor.all.min.js'
+                ]).then(function () {
+                    _deal();
+                })
+            } else {
+                $log.log("ue already exists");
+                _deal();
+            }
+
+
+            function _deal() {
+                $log.log("deal");
+                var id = "container" + commonService.guid();
+                ele.attr("id", id);
+                var ue = UE.getEditor(id);
+                ue.addListener("contentChange", function () {
+                    scope.$apply(function () {
+                        scope.model = ue.getContent();
+                    })
+                })
+            }
+        }
+    }
+});
+
+hejie.directive("listMaintain", function ($log, commonService) {
+    return {
+        restrict : "EA",
+        scope : {
+            model : "="
+        },
+        templateUrl : "src/tpl/includes/listMaintain.html",
+        link : function (scope, ele, attrs) {
+            scope.insert = function () {
+                scope.model.push(scope.insertItem);
+                scope.insertItem = "";
+            };
+            scope.remove = function (index) {
+                scope.model.splice(index, 1);
+            }
+        }
+    }
+});
+
