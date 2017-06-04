@@ -110,6 +110,9 @@ body {
 .blog img {
   max-width: 100%;
 }
+.blog blockquote {
+  font-size: 14px;
+}
 .active {
   color: mediumpurple!important;
   font-weight: bold;

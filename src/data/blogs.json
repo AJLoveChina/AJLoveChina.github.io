@@ -2,6 +2,16 @@
   "dir": "src/blogs/",
   "blogs": [
     {
+      "topics": [
+        "JSON.stringify",
+        "JSON"
+      ],
+      "title": "震惊，JSON.stringify函数居然还有这样的功能",
+      "weather": "sun",
+      "content": "json.stringify.html",
+      "createTime": 1496552738344
+    },
+    {
       "createTime": "1495677417974",
       "content": "no-auto-complete.html",
       "weather" : "sun",
