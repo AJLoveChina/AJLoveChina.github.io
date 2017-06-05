@@ -96,7 +96,7 @@ hejie.service("commonService", function () {
     this.isAdmin = function () {
         return new URI(location.href).query(true).isAdmin;
     };
-    
+
     this.isNameOfHejie = function (name) {
         var bool = false;
         this.config.baoliuNames.forEach(function (item, i) {
@@ -105,5 +105,10 @@ hejie.service("commonService", function () {
             }
         });
         return bool;
+    };
+
+    this.md5 = function(val) {
+
     }
+
 });

@@ -30,10 +30,11 @@ hejie.controller("blogListCtrl", function ($scope, blogService) {
     }
 });
 
-hejie.controller("blogOneCtrl", function ($scope, $stateParams, blogService) {
+hejie.controller("blogOneCtrl", function ($scope, $stateParams, blogService, commonService) {
     var fileName = $stateParams.fileName;
     blogService.getBlogByContent(fileName, function (err, item) {
         if (!err) {
+            item["commentid"] = "blog-comment-" + commonService.md
             $scope.item = item;
         }
     });
