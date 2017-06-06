@@ -3,6 +3,19 @@
   "blogs": [
     {
       "topics": [
+        "hash",
+        "TOTP",
+        "哈希算法",
+        "MD5",
+        "加盐哈希（salt）"
+      ],
+      "title": "这可能是TOTP算法最简单的科普了",
+      "weather": "cloud",
+      "content": "totp.html",
+      "createTime": 1496747365143
+    },
+    {
+      "topics": [
         "JSON.stringify",
         "JSON"
       ],
