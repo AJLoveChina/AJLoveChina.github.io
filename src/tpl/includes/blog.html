@@ -11,8 +11,8 @@
             发表与：{{item.createTime|timeago}} -- {{item.createTime|date:"HH:mm"}}
              | <span weather="item.weather"></span>
         </p>
-        <div ng-include="item.url" ng-if="item.url"></div>
-        <div ng-include="item.content|blogContent2Url" ng-if="!item.url"></div>
+        <div class="blog-content-area" ng-include="item.url" ng-if="item.url"></div>
+        <div class="blog-content-area" ng-include="item.content|blogContent2Url" ng-if="!item.url"></div>
     </div>
     <div class="panel-footer">
         <span ng-repeat="topic in item.topics">
