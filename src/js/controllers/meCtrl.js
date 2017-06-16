@@ -56,3 +56,17 @@ hejie.controller("wenjuanCtrl", function ($scope, $stateParams) {
     $scope.fileName = "src/data/questionnaire/" + $stateParams.fileName + ".json";
 
 });
+
+hejie.controller("writeBlogCtrl", function ($scope, $log, $stateParams) {
+    $scope.blog = {
+        topics : []
+    };
+    $scope.blogContent = "";
+    
+    $scope.generate = function () {
+        $scope.blog.createTime = + new Date();
+
+        $scope.json = JSON.stringify($scope.blog, null, 4);
+    }
+
+});

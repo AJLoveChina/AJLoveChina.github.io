@@ -1,0 +1,115 @@
+<p>
+    我们都知道在web处理json的最主要俩个函数分别是：
+</p>
+<ol class=" list-paddingleft-2" style="list-style-type: decimal;">
+    <li>
+        <p>
+            JSON.stringify&nbsp;&nbsp;&nbsp;&nbsp;--序列化json对象，生成json字符串
+        </p>
+    </li>
+    <li>
+        <p>
+            JSON.parse&nbsp;&nbsp;&nbsp;&nbsp;--解析json字符串，生成json对象
+        </p>
+    </li>
+</ol>
+<p>
+    这俩个函数兼容性非常好，但是在IE7-（包括IE7）不支持。
+</p>
+<p>
+    当然啦，截止2017.6.4，不兼容IE7已经不是什么大问题，好多新的web应用直接放弃不支持HTML5的浏览器，强势！web工程师看到了黎明的曙光。
+</p>
+<p>
+    当然，如果你一定要兼容某些低版本浏览器的话，可以在调用这俩个函数前先加载json2.js，然后你的JS代码不需要任何改动，只需要在HTML中用script标签加载这个文件就好了，<a href="https://github.com/douglascrockford/JSON-js" target="_blank">Github地址点击这里</a>。牛逼哄哄的Douglas Crockford前辈作品，当然也有很多人抨击他写的JS相关书籍，，，
+</p>
+<p>
+    哎，每次写篇文章说这么多题外话，言归正传额。
+</p>
+<blockquote>
+    <p>
+        群众：JSON.stringify除了序列化JSON以外，还有什么隐藏的功能吗？
+    </p>
+    <p>
+        AJ：那就是以漂亮的方式序列化JSON
+    </p>
+    <p>
+        群众：what the fake?
+    </p>
+</blockquote>
+<p>
+    看下面代码：<br/>
+</p>
+<pre class="brush:js;toolbar:false">//我们定义一个变量
+var obj = {name:&quot;hejie&quot;,age:12,marry:false};</pre>
+<p>
+    如果你简单地调用stringify方法：
+</p>
+<pre class="brush:js;toolbar:false">JSON.stringify(obj)</pre>
+<p>
+    输出
+</p>
+<pre class="brush:js;toolbar:false">{&quot;name&quot;:&quot;hejie&quot;,&quot;age&quot;:12,&quot;marry&quot;:false}</pre>
+<p>
+    但是如果你按下面这么调用：
+</p>
+<pre class="brush:js;toolbar:false">JSON.stringify(obj, null, 4)  </pre>
+<p>
+    输出
+</p>
+<pre class="brush:js;toolbar:false">{
+    &quot;name&quot;: &quot;hejie&quot;,
+    &quot;age&quot;: 12,
+    &quot;marry&quot;: false
+}</pre>
+<p>
+    <a href="https://jsfiddle.net/hejie/1mfh6bk9/" target="_blank">Try it 使用jsfiddle试试</a>
+</p>
+<hr/>
+<p>
+    PS：第三个参数4指的是使用4个空格格式化层级，你可以使用其它数值或者制表符 <code>\t</code> </p>
+<p>
+    PPS：支持这俩个函数的浏览器都支持这么格式化的做法，而且json2.js中也有相应的实现，意思就是低版本浏览器中如果你使用了json2也可以这样美化json。
+</p>
+
+<p>
+    然后， 我猜你想知道着第二个参数null到底是做什么的，下面这段摘自MDN，数据专业，童叟无欺。
+</p>
+<h2 id="Syntax" name="Syntax" style="word-wrap: break-word; margin: 0px 0px 12px; padding: 0px; border: 0px; font-family: &quot;Open Sans&quot;, arial, sans-serif; line-height: 1; color: rgb(77, 78, 83); font-size: 2.14286rem; letter-spacing: -1px; white-space: normal; background-color: rgb(255, 255, 255);">
+    <span style="font-size: 16px;">语法</span>
+</h2>
+<pre class="syntaxbox" style="background-color: rgb(221, 228, 233); margin-top: 0px; margin-bottom: 20px; padding: 15px; border-width: 0px 0px 0px 5px; border-top-style: initial; border-right-style: initial; border-bottom-style: initial; border-left-style: solid; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: rgb(85, 138, 187); border-image: initial; font-size: 14px; line-height: 19px; color: rgb(59, 60, 64); overflow: auto; font-family: consolas, monaco, &quot;Andale Mono&quot;, monospace; direction: ltr; tab-size: 4; hyphens: none; white-space: pre-wrap;">JSON.stringify(value[, replacer [, space]])</pre>
+<h3 id="Parameters" name="Parameters" style="word-wrap: break-word; margin: 0px 0px 12px; padding: 0px; border: 0px; font-family: &quot;Open Sans&quot;, arial, sans-serif; font-weight: 200; line-height: 1; color: rgb(77, 78, 83); font-size: 1.71429rem; letter-spacing: -0.021em; white-space: normal; background-color: rgb(255, 255, 255);">
+    <span style="font-size: 16px;">参数</span>
+</h3>
+<ul style="margin: 0px 0px 20px; padding: 10px; border: 0px; color: rgb(59, 60, 64); font-family: &quot;Open Sans&quot;, arial, sans-serif; font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255);" class=" list-paddingleft-2">
+    <li>
+        <p>
+            <code style="word-wrap: break-word; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-weight: inherit; font-family: consolas, &quot;Liberation Mono&quot;, courier, monospace;">value</code>
+        </p>
+    </li>
+    <li>
+        <p>
+            将要序列化成 一个JSON 字符串的值。
+        </p>
+    </li>
+    <li>
+        <p>
+            <code style="word-wrap: break-word; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-weight: inherit; font-family: consolas, &quot;Liberation Mono&quot;, courier, monospace;">replacer</code>&nbsp;<span class="inlineIndicator optional optionalInline" style="margin: 0px 0px 0px 10px; padding: 0.45em 0.35em 0.3em; border-width: 0px 0px 0px 4px; border-top-style: initial; border-right-style: initial; border-bottom-style: initial; border-left-style: solid; border-color: rgb(224, 227, 228); border-image: initial; display: inline-block; min-width: 20px; vertical-align: baseline; border-radius: 2px; background: rgb(244, 245, 245); font-family: Helvetica, arial, sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 1px; line-height: normal;">可选</span>
+        </p>
+    </li>
+    <li>
+        <p>
+            如果该参数是一个函数，则在序列化过程中，被序列化的值的每个属性都会经过该函数的转换和处理；如果该参数是一个数组，则只有包含在这个数组中的属性名才会被序列化到最终的 JSON 字符串中；如果该参数为null或者未提供，则对象所有的属性都会被序列化；关于该参数更详细的解释和示例，请参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_native_JSON#The_replacer_parameter" class="new" style="color: rgb(153, 0, 0); text-decoration-line: none; margin: 0px; padding: 0px; border: 0px;">使用原生的 JSON 对象</a>一文。
+        </p>
+    </li>
+    <li>
+        <p>
+            <code style="word-wrap: break-word; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-weight: inherit; font-family: consolas, &quot;Liberation Mono&quot;, courier, monospace;">space</code>&nbsp;<span class="inlineIndicator optional optionalInline" style="margin: 0px 0px 0px 10px; padding: 0.45em 0.35em 0.3em; border-width: 0px 0px 0px 4px; border-top-style: initial; border-right-style: initial; border-bottom-style: initial; border-left-style: solid; border-color: rgb(224, 227, 228); border-image: initial; display: inline-block; min-width: 20px; vertical-align: baseline; border-radius: 2px; background: rgb(244, 245, 245); font-family: Helvetica, arial, sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 1px; line-height: normal;">可选</span>
+        </p>
+    </li>
+    <li>
+        <p>
+            指定缩进用的空白字符串，用于美化输出（pretty-print）；如果参数是个数字，它代表有多少的空格；上限为10。该值若小于1，则意味着没有空格；如果该参数为字符串(字符串的前十个字母)，该字符串将被作为空格；如果该参数没有提供（或者为null）将没有空格。
+        </p>
+    </li>
+</ul>

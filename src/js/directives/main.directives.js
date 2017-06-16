@@ -20,7 +20,8 @@ hejie.directive("pagination", function () {
        scope: {
            page : '=page',
            maxPage : '=',
-           onClick : "="
+           onClick : "=",
+           getHref : "="
        }
    }
 });
@@ -32,6 +33,11 @@ hejie.directive("blogShow", function () {
         scope: {
             item: "=item",
             titleLink : "="
+        },
+        link : function (scope, ele, attrs) {
+            ele.on("click", ".blog-content-area a", function (ev) {
+                $(this).attr("target", "_blank");
+            })
         }
     }
 });
@@ -137,7 +143,7 @@ hejie.directive("stateListPrefix", function ($state) {
 /**
  * 教程
  */
-hejie.directive("tutotial", function ($http, $ocLazyLoad) {
+hejie.directive("tutotial", function ($http, $ocLazyLoad, commonService) {
     return function (scope, ele, attrs) {
         $http({
             url : attrs.tutotial,
@@ -168,6 +174,7 @@ hejie.directive("tutotial", function ($http, $ocLazyLoad) {
                         content = $("<div>"),
                         page = $("<div>");
                     title.addClass("panel-heading panel-default");
+                    title.css("font-weight", "bold");
                     content.addClass("panel-body");
                     page.addClass("badge");
                     page.css("float", "right");
@@ -206,7 +213,9 @@ hejie.directive("tutotial", function ($http, $ocLazyLoad) {
                     dots : true,
                     lazyLoad : "ondemand",
                     fade : true,
-                    adaptiveHeight : true
+                    adaptiveHeight : true,
+                    swipe : commonService.isMobile(),
+                    draggable : commonService.isMobile()
                 });
             });
         })
@@ -308,4 +317,126 @@ hejie.directive("hideTopNavText", function () {
             $(document.body).removeClass("hejie-hide-top-nav-text");
         })
     }
-})
+});
+
+
+hejie.directive("ueditor", function ($rootScope, $log, $ocLazyLoad, commonService) {
+    return {
+        restrict : "EA",
+        scope : {
+            model : "="
+        },
+        link : function (scope, ele, attrs) {
+            if (!window.UE) {
+                $log.log("no ue, load ue");
+                $ocLazyLoad.load([
+                    'src/js/ueditor.config.js',
+                    'http://apps.bdimg.com/libs/ueditor/1.4.3.1/ueditor.all.min.js'
+                ]).then(function () {
+                    _deal();
+                })
+            } else {
+                $log.log("ue already exists");
+                _deal();
+            }
+
+
+            function _deal() {
+                $log.log("deal");
+                var id = "container" + commonService.guid();
+                ele.attr("id", id);
+                var ue = UE.getEditor(id, {
+                    initialFrameHeight : 500,
+                    autoHeightEnabled: true,
+                    autoFloatEnabled: true
+                });
+                ue.addListener("contentChange", function () {
+                    scope.$apply(function () {
+                        scope.model = ue.getContent();
+                    })
+                })
+            }
+        }
+    }
+});
+
+hejie.directive("quill", function ($rootScope, $log, $ocLazyLoad, commonService, $timeout) {
+    return {
+        restrict : "EA",
+        scope : {
+            model : "="
+        },
+        templateUrl : "src/tpl/editor/quill-directive.html",
+        link : function (scope, ele, attrs) {
+            scope.uuid = commonService.guid();
+
+            if (!window.Quill) {
+                $ocLazyLoad.load([
+                    'https://cdn.quilljs.com/1.0.0/quill.snow.css',
+                    'https://cdn.quilljs.com/1.0.0/quill.js'
+                ]).then(function () {
+                    _deal();
+                })
+            } else {
+                _deal();
+            }
+
+            scope.getHtml = function () {
+                scope.html = scope.quill.root.innerHTML;
+            };
+
+
+            function _deal() {
+                $timeout(function () {
+
+                    var toolbarOptions = [
+                        ['bold', 'italic', 'underline', 'strike', 'link'],        // toggled buttons
+                        ['blockquote', 'code-block'],
+
+                        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+                        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+                        [{ 'direction': 'rtl' }],                         // text direction
+
+                        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                        [{ 'font': [] }],
+                        [{ 'align': [] }],
+
+                        ['clean']                                         // remove formatting button
+                    ];
+
+                    scope.quill = new Quill('#editor-' + scope.uuid, {
+                        modules: {
+                            toolbar: toolbarOptions
+                        },
+                        theme: 'snow'
+                    });
+                });
+            }
+        }
+    }
+});
+
+hejie.directive("listMaintain", function ($log, commonService) {
+    return {
+        restrict : "EA",
+        scope : {
+            model : "="
+        },
+        templateUrl : "src/tpl/includes/listMaintain.html",
+        link : function (scope, ele, attrs) {
+            scope.insert = function () {
+                scope.model.push(scope.insertItem);
+                scope.insertItem = "";
+            };
+            scope.remove = function (index) {
+                scope.model.splice(index, 1);
+            }
+        }
+    }
+});
+

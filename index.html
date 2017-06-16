@@ -34,6 +34,22 @@
     </script>
     <![endif]-->
 
+    <style>
+        div.slick-slider {
+            -webkit-user-select: text;
+            -khtml-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+        div.slick-list.draggable {
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
     <!-- lib-->
     <script>
         function loadScript(url, callback){
@@ -116,7 +132,6 @@
             "src/js/controllers/userInfoCtrl.js?t=20170502",
             "src/js/controllers/meCtrl.js?t=20170502",
             "src/js/controllers/messageController.js?t=20170502",
-            "src/js/controllers/editorController.js?t=20170502",
             "src/js/controllers/testController.js?t=20170502",
             "src/js/services/blogService.js?t=20170502",
             "src/js/services/commonService.js?t=20170502",
@@ -140,5 +155,7 @@
 <div class="container">
     <div data-ui-view=""></div>
 </div>
+
+<div style="height: 20px"></div>
 </body>
 </html>

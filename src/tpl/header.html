@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="javascript:;" ui-sref="home" ui-sref-active="active">Home</a>
+                    <a href="javascript:;" ui-sref="home" ng-class="{active : ('home'|includedByState) || ('homePage' | includedByState)}">Home</a>
                 </li>
                 <li>
                     <a href="javascript:;" ui-sref="me" ui-sref-active="active">Me</a>

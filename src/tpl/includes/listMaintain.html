@@ -1,0 +1,6 @@
+<div ng-repeat="item in model">
+    <input type="text" ng-model="model[$index]" />
+    <em class="glyphicon glyphicon-minus" ng-click="remove($index)"></em>
+</div>
+<input type="text" ng-model="insertItem">
+<em class="glyphicon glyphicon-plus" ng-click="insert()"></em>
