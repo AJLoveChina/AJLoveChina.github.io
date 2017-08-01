@@ -3,6 +3,18 @@
   "blogs": [
     {
       "topics": [
+        "open source",
+        "国产",
+        "国际化",
+        "开源"
+      ],
+      "title": "关于开源的一些看法",
+      "weather": "cloud",
+      "content": "my-opinions-on-open-source.html",
+      "createTime": 1501586848729
+    },
+    {
+      "topics": [
         "web图标字体",
         "iconfont.cn",
         "阿里巴巴UED"
