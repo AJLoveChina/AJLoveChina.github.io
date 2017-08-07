@@ -15,17 +15,16 @@
         max-width: 100%!important;
     }
 </style>
+<script src="http://cdn.bootcss.com/jquery/1.10.1/jquery.js"></script>
 <script>
-    window.onload = function () {
-        console.log(1);
-        var imgs = document.querySelectorAll("img");
-        imgs.forEach(function (item) {
-            item.addEventListener("error", function () {
-                item.style.display = "none";
-            });
-            item.setAttribute("src", item.getAttribute("data-actualsrc"));
+    $(function () {
+        $("img").each(function () {
+            $(this).attr("src",  $(this).data("actualsrc"));
         })
-    }
+        $("img").on("error", function () {
+            $(this).hide();
+        })
+    })
 </script>
 
 <div id="hejie-container">
