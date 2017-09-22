@@ -3,6 +3,14 @@
   "blogs": [
     {
       "topics": [
+        "moment.js"
+      ],
+      "title": "Moment.js入门实践--最好的第三方前端时间处理工具库",
+      "weather": "cloud",
+      "content": "moment.js.html",
+      "createTime": 1506043558408
+    },{
+      "topics": [
         "open source",
         "国产",
         "国际化",
