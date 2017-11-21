@@ -3,6 +3,16 @@
   "blogs": [
     {
       "topics": [
+        "html2pdf",
+        "nodejs"
+      ],
+      "title": "使用nodejs搭建一个HTML转PDF的服务(windows 与 linux皆适用)",
+      "weather": "rain",
+      "content": "nodejs-html2pdf.html",
+      "createTime": 1511252853855
+    },
+    {
+      "topics": [
         "moment.js"
       ],
       "title": "Moment.js入门实践--最好的第三方前端时间处理工具库",
