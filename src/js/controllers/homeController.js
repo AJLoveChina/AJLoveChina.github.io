@@ -60,3 +60,26 @@ hejie.controller('artsCtrl', function ($scope, commonService) {
 
 })
 
+
+hejie.controller('workCtrl', function ($scope, commonService) {
+  $scope.list = [
+    {
+      title : "全国大学生英语四六级模拟考试",
+      duration : "2016.09 - 2017.03",
+      content : "1.UI页面集成<br>\n" +
+      "2.浏览器兼容问题解决<br>\n" +
+      "3.前端组件封装, 实现开箱即用(如获取验证码, 粘性表单, 下拉选框等)",
+      topics : ["AngularJS"]
+    },{
+      title : "智学网-教考平台开发",
+      duration : "2017.03 - 至今",
+      content : "1.配置项目框架,拉通流程. 如:日志, 事务, 单元测试, mysql与mongo数据库访问, 工具类, 配置分离等<br>\n" +
+      "2.业务功能开发, 主要是数据统计, 成绩分析等功能<br>\n" +
+      "3.独立服务开发。跨平台的HTML转PDF服务，英语单词翻译服务<br>\n" +
+      "4.前端优化, 如:播放音频组件,实现多音频播放。引入npm-install-webpack-plugin, 实现webpack自动定位依赖缺失问题。切面的方式实现请求加载动画<br>\n" +
+      "5.ckeditor深度定制，实现前端上传截图到第三方文件存储服务（阿里云OSS以及腾讯云COS）<br>\n",
+      topics : ["spring", "mybatis", "vuejs", "webpack"]
+    }
+  ];
+})
+

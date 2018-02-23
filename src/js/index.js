@@ -75,6 +75,10 @@ hejie.config(function ($stateProvider, $locationProvider, $urlRouterProvider, $l
       url: '/arts',
       templateUrl: 'src/tpl/arts.html'
     })
+    .state('work', {
+      url: '/work',
+      templateUrl: 'src/tpl/work.html'
+    })
     .state('message', {
       url: '/message',
       templateUrl: 'src/tpl/message.html'
