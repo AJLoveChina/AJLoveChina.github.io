@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BlogService} from "../../service/blog.service";
-import moment from 'moment'
+
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-home',

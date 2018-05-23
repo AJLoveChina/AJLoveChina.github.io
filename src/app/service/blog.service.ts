@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
 import axios from 'axios'
 
-let blogsJson = require("../data/blogs.json");
+import {blogsJson} from '../data/blogs'
 
 @Injectable({
   providedIn: 'root'
@@ -30,11 +30,11 @@ export class BlogService {
     return obj;
   }
 
-  getBlogHTML(path) : Promise {
+  getBlogHTML(path) : Promise<any> {
     return axios.get(path)
   }
 
-  getTotal(fn) : number {
+  getTotal(fn) : void {
     fn(this.blogsJson.blogs.length);
   }
 }

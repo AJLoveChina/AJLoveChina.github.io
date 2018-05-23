@@ -1,5 +1,5 @@
-{
-  "dir":"/assets/blogs",
+export const blogsJson = {
+  "dir": "/assets/blogs",
   "blogs": [
     {
       "topics": [
@@ -334,4 +334,4 @@
       "title": "浅谈Js面向对象"
     }
   ]
-}
+};
