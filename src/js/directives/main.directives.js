@@ -331,7 +331,7 @@ hejie.directive("ueditor", function ($rootScope, $log, $ocLazyLoad, commonServic
                 $log.log("no ue, load ue");
                 $ocLazyLoad.load([
                     'src/js/ueditor.config.js',
-                    'http://apps.bdimg.com/libs/ueditor/1.4.3.1/ueditor.all.min.js'
+                    '//apps.bdimg.com/libs/ueditor/1.4.3.1/ueditor.all.min.js'
                 ]).then(function () {
                     _deal();
                 })

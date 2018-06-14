@@ -7,7 +7,7 @@ hejie.service("commonService", function () {
     var _self = this;
     this.config = {
         title : "霸都丶傲天",
-        host : location.host.indexOf("localhost") !== -1 ? "http://localhost:3000" : "http://nigeerhuo.com:3000",
+        host : location.host.indexOf("localhost") !== -1 ? "//localhost:3000" : "//nigeerhuo.com:3000",
         ajax : {
             success : 1,
             error : 0

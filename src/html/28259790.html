@@ -15,7 +15,7 @@
         max-width: 100%!important;
     }
 </style>
-<script src="http://cdn.bootcss.com/jquery/1.10.1/jquery.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.10.1/jquery.js"></script>
 <script>
     $(function () {
         $("img").each(function () {
@@ -178,7 +178,7 @@
             <p><br></p>
             <p>vue-cli要做到@angular/cli这么完善基本上没有可能，因为人力和资金都够不上。也正是因为vue-cli是如此简陋，导致很多日常开发必备的功能都需要开发者自己去下载配置第三方的Node模块。</p>
             <p>噢，这里要特别提一下，@angular/cli的底层集成了webpack，Angular项目组在此基础上做了自己的封装，如果你有兴趣去看<a
-                    href="http://link.zhihu.com/?target=https%3A//github.com/angular/angular-cli" class=" wrap external"
+                    href="//link.zhihu.com/?target=https%3A//github.com/angular/angular-cli" class=" wrap external"
                     target="_blank" rel="nofollow noreferrer">@angular/cli<i class="icon-external"></i></a>的源代码，应该已经发现了这一点。
             </p>
             <h2><b>Round 2：异步加载模块</b></h2>
@@ -195,10 +195,10 @@
             <p><br></p>
             <p>以下是代码块和路由之间的对应关系（虚构的）：</p>
             <ul>
-                <li>http://localhost:4200/home chunk-0.js(10k)</li>
-                <li>http://localhost:4200/user chunk-1.js(10k)</li>
-                <li>http://localhost:4200/role chunk-2.js(50k)</li>
-                <li>http://localhost:4200/permission chunk-3.js(80k)</li>
+                <li>//localhost:4200/home chunk-0.js(10k)</li>
+                <li>//localhost:4200/user chunk-1.js(10k)</li>
+                <li>//localhost:4200/role chunk-2.js(50k)</li>
+                <li>//localhost:4200/permission chunk-3.js(80k)</li>
             </ul>
             <p>
                 就算你不是前端开发者，你也能看出来，这样好多了对不对？你不需要一上来就把所有js文件（一共150k）全部加载进来，只有当用户开始使用某个菜单的时候，才去异步加载。很明显，这是一个必备的特性，我们来看在Vue和Angular里面分别是怎么实现异步模块的。</p>
@@ -331,7 +331,7 @@
             <p><br></p>
             <p>编写集成测试用例的时候，同样使用的Jasmine语法，你不需要学习任何新东西。</p>
             <p>从对集成测试的支持大家应该可以看出来，在那些技术含量不太高的地方，Vue确实可以抄袭得有模有样，但是一旦技术门槛提高，Vue就没法抄了，或者说抄得没那么快了。</p>
-            <p>想要了解Protractor更多的细节，请访问官方网站：<a href="http://link.zhihu.com/?target=https%3A//github.com/angular/protractor"
+            <p>想要了解Protractor更多的细节，请访问官方网站：<a href="//link.zhihu.com/?target=https%3A//github.com/angular/protractor"
                                               class=" wrap external" target="_blank" rel="nofollow noreferrer">Protractor<i
                     class="icon-external"></i></a></p>
             <h2><b>Round 4：TypeScript</b></h2>
@@ -360,7 +360,7 @@
             <p>
                 因为TypeScript的语法和ES6的语法相似度非常高，如果你已经熟悉了ES6，可以直接上手写TypeScript，一边玩一边学就好了。对于已经掌握了一门后端编程语言的开发者，例如Java和C#，那就更加没有难度了，除了一些小小的语法习惯要适应一下之外，几乎没有任何难度。</p>
             <p>关于TypeScript，比较有意思的一点是，这门语言本身也是一个开源项目，它在github上的链接：<a
-                    href="http://link.zhihu.com/?target=https%3A//github.com/Microsoft/TypeScript" class=" external"
+                    href="//link.zhihu.com/?target=https%3A//github.com/Microsoft/TypeScript" class=" external"
                     target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">github.com/Microsoft/Ty</span><span
                     class="invisible">peScript</span><span class="ellipsis"></span><i class="icon-external"></i></a>
                 。有一件事特别值得一提，C#之父Anders Hejlsberg是TypeScript项目组的核心代码提交者。</p>
@@ -430,17 +430,17 @@
             <p>Vue只是一个新手玩具，而Angular才是真正的战斗坦克。</p>
             <p>所以，拜托不要再拿Vue来和Angular比了，完全就不是一个量级的东西好不好啊？</p>
             <h2><b>附：学习资源</b></h2>
-            <p>想了解一下Angular？请参考官方网站<a href="http://link.zhihu.com/?target=https%3A//angular.io/" class=" wrap external"
+            <p>想了解一下Angular？请参考官方网站<a href="//link.zhihu.com/?target=https%3A//angular.io/" class=" wrap external"
                                       target="_blank" rel="nofollow noreferrer">Angular Docs<i
                     class="icon-external"></i></a>。还有我自己写的一个系列开源项目可以帮助你快速入手：<a
-                    href="http://link.zhihu.com/?target=http%3A//git.oschina.net/mumu-osc/NiceFish" class=" wrap external"
+                    href="//link.zhihu.com/?target=http%3A//git.oschina.net/mumu-osc/NiceFish" class=" wrap external"
                     target="_blank" rel="nofollow noreferrer">NiceFish<i class="icon-external"></i></a> 。这个开源项目包含了典型的To
                 C型布局的实例、To
                 B型管理后台系统的示例、移动端Ionic实例、配合Electron打包成桌面端应用的实例。而且我给NiceFish这个项目录制了完整的视频教程，编写了详细的文档。所以，你可以发现，它的star数量已经超过了1.7K，作为一个没啥技术含量的教学项目，还是挺不错的。
             </p>
             <p><br></p>
             <p>原文链接：<a
-                    href="http://link.zhihu.com/?target=http%3A//damoqiongqiu.github.io/web%25E5%2589%258D%25E7%25AB%25AF/2017/08/02/Angular-vs-Vue.html"
+                    href="//link.zhihu.com/?target=http%3A//damoqiongqiu.github.io/web%25E5%2589%258D%25E7%25AB%25AF/2017/08/02/Angular-vs-Vue.html"
                     class=" wrap external" target="_blank" rel="nofollow noreferrer">Angular有哪些地方比Vue更优秀？<i
                     class="icon-external"></i></a></p></div>
         <div class="PostIndex-footer">

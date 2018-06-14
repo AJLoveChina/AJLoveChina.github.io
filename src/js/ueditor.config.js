@@ -27,7 +27,7 @@
     window.UEDITOR_CONFIG = {
 
         //为编辑器实例添加一个路径，这个不能被注释
-        UEDITOR_HOME_URL: "http://apps.bdimg.com/libs/ueditor/1.4.3.1/"
+        UEDITOR_HOME_URL: "//apps.bdimg.com/libs/ueditor/1.4.3.1/"
 
         // 服务器统一请求接口路径
         , serverUrl: URL + "jsp/controller.jsp"
@@ -170,7 +170,7 @@
         //    'square' : ''   //'■ 小方块'
         //}
         //,listDefaultPaddingLeft : '30'//默认的左边缩进的基数倍
-        //,listiconpath : 'http://bs.baidu.com/listicon/'//自定义标号的路径
+        //,listiconpath : '//bs.baidu.com/listicon/'//自定义标号的路径
         //,maxListLevel : 3 //限制可以tab的级数, 设置-1为不限制
 
         //,autoTransWordToList:false  //禁止word中粘贴进来的列表自动变成列表标签
@@ -341,7 +341,7 @@
         //    'anchor':'~/dialogs/anchor/anchor.html',
         //}
 
-        //webAppKey 百度应用的APIkey，每个站长必须首先去百度官网注册一个key后方能正常使用app功能，注册介绍，http://app.baidu.com/static/cms/getapikey.html
+        //webAppKey 百度应用的APIkey，每个站长必须首先去百度官网注册一个key后方能正常使用app功能，注册介绍，//app.baidu.com/static/cms/getapikey.html
         //, webAppKey: ""
     };
 

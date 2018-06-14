@@ -1,6 +1,6 @@
 /*!
  * bmob JavaScript SDK
- * http://www.bmob.cn
+ * //www.bmob.cn
  * Copyright Bmob, Inc.
  * The Bmob JavaScript SDK is freely distributable under the MIT license.
  *
@@ -13,7 +13,7 @@
   root.Bmob.VERSION = "js0.0.1";
 }(this));
 //     Underscore.js 1.4.4
-//     http://underscorejs.org
+//     //underscorejs.org
 //     (c) 2009-2013 Jeremy Ashkenas, DocumentCloud Inc.
 //     Underscore may be freely distributed under the MIT license.
 
@@ -565,7 +565,7 @@
 
   // Generate an integer Array containing an arithmetic progression. A port of
   // the native Python `range()` function. See
-  // [the Python documentation](http://docs.python.org/library/functions.html#range).
+  // [the Python documentation](//docs.python.org/library/functions.html#range).
   _.range = function(start, stop, step) {
     if (arguments.length <= 1) {
       stop = start || 0;
@@ -838,7 +838,7 @@
   // Internal recursive comparison function for `isEqual`.
   var eq = function(a, b, aStack, bStack) {
     // Identical objects are equal. `0 === -0`, but they aren't identical.
-    // See the Harmony `egal` proposal: http://wiki.ecmascript.org/doku.php?id=harmony:egal.
+    // See the Harmony `egal` proposal: //wiki.ecmascript.org/doku.php?id=harmony:egal.
     if (a === b) return a !== 0 || 1 / a == 1 / b;
     // A strict comparison is necessary because `null == undefined`.
     if (a == null || b == null) return a === b;
@@ -1331,8 +1331,8 @@
 
   // Set the server for Bmob to talk to.
   Bmob.serverURL = "https://api.bmob.cn";
-  // Bmob.serverURL = "http://192.168.1.60:8080";
-  Bmob.fileURL = "http://file.bmob.cn";
+  // Bmob.serverURL = "//192.168.1.60:8080";
+  Bmob.fileURL = "//file.bmob.cn";
   
   // Check whether we are running in Node.js.
   if (typeof(process) !== "undefined" &&
@@ -2209,7 +2209,7 @@
    *     object.trigger('expand');</pre></p>
    *
    * <p>For more information, see the
-   * <a href="http://documentcloud.github.com/backbone/#Events">Backbone
+   * <a href="//documentcloud.github.com/backbone/#Events">Backbone
    * documentation</a>.</p>
    */
   Bmob.Events = {
@@ -3796,7 +3796,7 @@
   };
 
   // A list of file extensions to mime types as found here:
-  // http://stackoverflow.com/questions/58510/using-net-how-can-you-find-the-
+  // //stackoverflow.com/questions/58510/using-net-how-can-you-find-the-
   //     mime-type-of-a-file-based-on-the-file-signature
   var mimeTypes = {
     ai: "application/postscript",
@@ -5778,7 +5778,7 @@
    *
    *
    * <p>提供标准的 collection class。 更详细的信息请看
-   * <a href="http://documentcloud.github.com/backbone/#Collection">Backbone
+   * <a href="//documentcloud.github.com/backbone/#Collection">Backbone
    * documentation</a>.</p>
    */
   Bmob.Collection = function(models, options) {
@@ -6164,7 +6164,7 @@
    * <p>A fork of Backbone.View, provided for your convenience.  If you use this
    * class, you must also include jQuery, or another library that provides a
    * jQuery-compatible $ function.  For more information, see the
-   * <a href="http://documentcloud.github.com/backbone/#View">Backbone
+   * <a href="//documentcloud.github.com/backbone/#View">Backbone
    * documentation</a>.</p>
    * <p><strong><em>Available in the client SDK only.</em></strong></p>
    */
@@ -7704,7 +7704,7 @@
    * <p>A fork of Backbone.History, provided for your convenience.  If you
    * use this class, you must also include jQuery, or another library
    * that provides a jQuery-compatible $ function.  For more information,
-   * see the <a href="http://documentcloud.github.com/backbone/#History">
+   * see the <a href="//documentcloud.github.com/backbone/#History">
    * Backbone documentation</a>.</p>
    * <p><strong><em>Available in the client SDK only.</em></strong></p>
    */
@@ -7960,7 +7960,7 @@
    *
    * <p>A fork of Backbone.Router, provided for your convenience.
    * For more information, see the
-   * <a href="http://documentcloud.github.com/backbone/#Router">Backbone
+   * <a href="//documentcloud.github.com/backbone/#Router">Backbone
    * documentation</a>.</p>
    * <p><strong><em>Available in the client SDK only.</em></strong></p>
    */
@@ -8204,7 +8204,7 @@
 
   /**
    * @namespace 支付功能
-   * <a href="http://docs.bmob.cn/restful/developdoc/index.html?menukey=develop_doc&key=develop_restful#index_支付服务">cloud functions</a>.
+   * <a href="//docs.bmob.cn/restful/developdoc/index.html?menukey=develop_doc&key=develop_restful#index_支付服务">cloud functions</a>.
    */
   Bmob.Pay = Bmob.Pay || {};
 
@@ -8296,7 +8296,7 @@
 
   /**
    * 推送消息
-   * @param {Object} data -  具体的参数请查看<a href="http://docs.bmob.cn/restful/developdoc/index.html?menukey=develop_doc&key=develop_restful">推送文档</a>.
+   * @param {Object} data -  具体的参数请查看<a href="//docs.bmob.cn/restful/developdoc/index.html?menukey=develop_doc&key=develop_restful">推送文档</a>.
    * @param {Object} options options 对象。 options.success, 如果设置了，将会处理云端代码调用成功的情况。 options.error 如果设置了，将会处理云端代码调用失败的情况。 两个函数都是可选的。两个函数都只有一个参数。
    */
   Bmob.Push.send = function(data, options) {
