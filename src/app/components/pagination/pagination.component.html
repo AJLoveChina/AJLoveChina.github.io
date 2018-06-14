@@ -1,0 +1,49 @@
+<ul class="pagination" *ngIf="onClick">
+  <li (click)="onClick(1)">
+    <a href="javascript:;">
+      首页
+    </a>
+  </li>
+  <li (click)="onClick(page - 1)">
+    <a href="javascript:;" aria-label="Previous">
+      <span aria-hidden="true">&laquo;</span>
+    </a>
+  </li>
+  <li *ngFor="let n of []|midRange:maxPage:page"
+      ng-class="{'active' : n === page}"
+      (click)="onClick(n)"><a href="javascript:;">{{n}}</a></li>
+  <li (click)="onClick(page + 1)">
+    <a href="javascript:;" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+    </a>
+  </li>
+  <li (click)="onClick(maxPage)">
+    <a href="javascript:;">
+      末页
+    </a>
+  </li>
+</ul>
+<ul class="pagination" *ngIf="getHref">
+  <li>
+    <a [href]="getHref(1)">
+      首页
+    </a>
+  </li>
+  <li>
+    <a [href]="getHref(page - 1)" aria-label="Previous">
+      <span aria-hidden="true">&laquo;</span>
+    </a>
+  </li>
+  <li *ngFor="let n of []|midRange:maxPage:page"
+      [ngClass]="{'active' : n === page}"><a [href]="getHref(n)">{{n}}</a></li>
+  <li>
+    <a [href]="getHref(page + 1)" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+    </a>
+  </li>
+  <li>
+    <a [href]="getHref(maxPage)">
+      末页
+    </a>
+  </li>
+</ul>
