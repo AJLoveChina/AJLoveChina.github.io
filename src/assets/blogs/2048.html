@@ -1,13 +1,13 @@
 
     <div style="padding:0 10px;"><p style="line-height:" 2em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" font-size:="" 14px;="">&nbsp;&nbsp;&nbsp;&nbsp;感谢Gabriele Cirulli先生的创意与智慧，因为这是我妹妹非常喜欢的一款小游戏，所以我决定自己开发一个，并且可以玩10x10方格的2048。先看demo：(要先点击一下，控制键:上下左右)</span></p>
-        <p style="line-height:" 1.5em;=""><iframe src="http://nigeerhuo.com/2048/index.html " width="280" height="350" scrolling="no" frameborder="0" align=""></iframe></p>
-        <p style="line-height:" 2em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" font-size:="" 14px;="">&nbsp;&nbsp;&nbsp;<a href="http://nigeerhuo.com/2048/index.html" target="_blank">&nbsp;Quick Jump to Demo&nbsp;</a></span><br></p></div>
+        <p style="line-height:" 1.5em;=""><iframe src="//nigeerhuo.com/2048/index.html " width="280" height="350" scrolling="no" frameborder="0" align=""></iframe></p>
+        <p style="line-height:" 2em;=""><span style="font-family:" 微软雅黑,="" 'microsoft="" yahei';="" font-size:="" 14px;="">&nbsp;&nbsp;&nbsp;<a href="//nigeerhuo.com/2048/index.html" target="_blank">&nbsp;Quick Jump to Demo&nbsp;</a></span><br></p></div>
 
 
 		<span class="content" style="display:none;">
 			<p style="line-height:" 1.5em;="">那么接下来我们就来浅谈如何实现：</p>
 <p style="line-height:" 1.5em;="">首先我们来说一下游戏的核心思想。<span style="color:" rgb(192,="" 0,="" 0);="">这个游戏无非是创建一个 m*n 个元素的数组，然后捕获用户的键盘事件（上下左右）来控制或者说修改这个m*n的数组，然后在每次修改之后重新渲染这个数组，最终得到用户看到的游戏。</span>（这是许多游戏的核心思想）<br></p>
-<p>好，代码来了~~<img src="http://img.baidu.com/hi/jx2/j_0016.gif"></p>
+<p>好，代码来了~~<img src="//img.baidu.com/hi/jx2/j_0016.gif"></p>
 <pre class="brush:html;toolbar:false">&lt;!DOCTYPE&nbsp;html&gt;
 &lt;html&gt;
 &lt;head&gt;
