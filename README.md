@@ -1,2 +1,2 @@
-Welcome to AJ's Tech Blog\
-http://hejie.nigeerhuo.com
+Welcome to AJ's Docs Site\
+http://docs.nigeerhuo.com/idea
