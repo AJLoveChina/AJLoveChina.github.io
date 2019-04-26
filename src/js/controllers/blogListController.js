@@ -41,6 +41,7 @@ hejie.controller("blogListCtrl", function ($scope, blogService, $stateParams) {
     }
 });
 
+
 hejie.controller("wenzhangTitleListCtrl", function ($scope, blogService) {
     $scope.items = [];
 

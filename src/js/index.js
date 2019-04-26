@@ -56,9 +56,13 @@ hejie.config(function ($stateProvider, $locationProvider, $urlRouterProvider, $l
   $httpProvider.interceptors.push('loadingInterceptor')
 
   $logProvider.debugEnabled(true)
-  $urlRouterProvider.when('', '/home')
+  $urlRouterProvider.when('', '/index')
 
   $stateProvider
+    .state('index', {
+      url: '/index',
+      templateUrl: 'src/tpl/index.html'
+    })
     .state('home', {
       url: '/home',
       templateUrl: 'src/tpl/home.html'

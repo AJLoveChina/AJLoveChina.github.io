@@ -7,6 +7,41 @@ hejie.controller('home', function ($scope, $rootScope, commonService) {
   $rootScope.$broadcast('head.changeTitle', 'Home')
 })
 
+hejie.controller('TypingCtrl', function ($scope) {
+
+    var options = {
+        strings: [
+            [
+                `我是AJ，很高兴你来到这里 ：）`,
+                `我已经很久没有在这里更新博客了`,
+                `因为从去年6月份开始我就在<a href="https://www.zhihu.com/people/he-jie-37-25">知乎</a>上面写文章了`,
+                `这里记录的文章都是18年6月份以前写的`,
+                `包括我大学的时候，留着作为一份回忆吧`,
+                `我平时很多的业余时间都在为开源社区做贡献，你可以在<a href="https://github.com/AJLoveChina">Github</a>找到我`,
+                `就是这样，喵~`,
+                `-- 2019年4月26日 by 一直会做饭的程序汪`
+            ].join("<br>")
+        ],
+        typeSpeed: 60
+    };
+    var options2 = {
+        strings: [
+            [
+                `关于内推：`,
+                `我目前在Zoom从事前端开发工作`,
+                `如果你需要内推，`,
+                `可以将简历发送到我的邮箱 baker.he@zoom.us`,
+                `我会在看到邮件之后立刻回复你`
+            ].join("<br>")
+        ],
+        typeSpeed: 60
+    };
+
+    new Typed(".typing-container", options);
+    new Typed(".typing-leitui", options2);
+
+})
+
 hejie.controller('headCtrl', function ($scope, commonService) {
   $scope.title = commonService.config.title
 
