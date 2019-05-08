@@ -14,7 +14,7 @@ hejie.controller('TypingCtrl', function ($scope) {
             [
                 `我是AJ，很高兴你来到这里 ：）`,
                 `我已经很久没有在这里更新博客了`,
-                `因为从去年6月份开始我就在<a href="https://www.zhihu.com/people/he-jie-37-25">知乎</a>上面写文章了`,
+                `因为从去年6月份开始我就在<a href="https://www.zhihu.com/people/AJLoveChina">知乎</a>上面写文章了`,
                 `这里记录的文章都是18年6月份以前写的`,
                 `包括我大学的时候，留着作为一份回忆吧`,
                 `我平时很多的业余时间都在为开源社区做贡献，你可以在<a href="https://github.com/AJLoveChina">Github</a>找到我`,
