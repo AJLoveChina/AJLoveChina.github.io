@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>money</title>
+</head>
+<body>
+
+
+<div>
+    已卖美金
+    <input type="text" value="45000" id="yimai" disabled>
+    <input type="range" step="0.01" min="6.7" max="7.1" oninput="cal()"  value="7.04" id="huilv1">
+    <span id="huilv1_label"></span>
+</div>
+
+<div>
+    再卖美金
+    <input type="text" oninput="cal()" id="zaimai" value="50000">
+    <input type="range" step="0.01"  min="6.7" max="7.1"  oninput="cal()" value="6.8" id="huilv2">
+    <span id="huilv2_label"></span>
+</div>
+
+
+<div>
+    已卖获得(人民币)
+    <input type="text" id="yimaisuode" disabled>
+</div>
+
+<div>
+    再卖获得(人民币)（当年计税）
+    <input type="text" id="suode" disabled>
+</div>
+
+<script>
+    cal();
+    function cal() {
+        let yimai = parseFloat(document.getElementById('yimai').value);
+        let zaimai = parseFloat(document.getElementById('zaimai').value);
+        let huilv1 = parseFloat(document.getElementById('huilv1').value);
+        let huilv2 = parseFloat(document.getElementById('huilv2').value);
+
+        document.getElementById('huilv1_label').innerText =huilv1;
+        document.getElementById('huilv2_label').innerText =huilv2;
+
+        let levels = [
+            [36000, 0.03, 0],
+            [144000, 0.1, 2520],
+            [300000, 0.2, 16920],
+            [420000, 0.25, 31920],
+            [660000, 0.3, 52920],
+            [960000, 0.35, 85920],
+            [Number.MAX_SAFE_INTEGER, 0.45, 181920],
+        ];
+
+        let suode = document.getElementById('suode')
+        let yimaiSuode = document.getElementById('yimaisuode');
+        suode.value = leftRMB(zaimai*huilv2 + yimai * huilv1) - leftRMB(yimai * huilv1);
+        yimaiSuode.value = leftRMB(yimai * huilv1);
+        function leftRMB(shuiqianRMB) {
+            let level = levels.find(level => {
+                return level[0] > shuiqianRMB;
+            })
+
+            return parseInt(shuiqianRMB * ( 1- level[1]) + level[2]);
+        }
+    }
+
+
+</script>
+
+</body>
+</html>
