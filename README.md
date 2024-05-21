@@ -1,5 +1,5 @@
 Welcome to AJ's Docs Site\
-http://docs.nigeerhuo.com
+https://ajlovechina.github.io
 
 
 ### 项目地址
