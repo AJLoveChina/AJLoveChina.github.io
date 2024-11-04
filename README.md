@@ -16,7 +16,7 @@ https://ajlovechina.github.io
     <a href="/whiteboard/">Whiteboard 模版/工具</a>
 </li>
 <li>
-    <a href="https://ajlovechina.github.io/FlashCards">English Flash Cards</a>
+    <a href="https://ajlovechina.github.io/flashcard">English Flash Cards</a>
 </li>
 <li>
     <a href="https://ajlovechina.github.io/vue-keyboard/docs/index.html">Virtual Keyboard</a>
